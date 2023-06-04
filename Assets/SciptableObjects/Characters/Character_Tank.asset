@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
+  m_Name: Character_Tank
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: 8182266f38c74674895173175bb189b1, type: 3}
+  characterMoodSprites:
+  - {fileID: 21300000, guid: 4fcb217af2faf8f40afa18a53947ebc1, type: 3}
+  - {fileID: 21300000, guid: 37f54483446097141b541abee062489f, type: 3}
+  - {fileID: 21300000, guid: 7a6d40304d8e3254ba4edcf58f9822d2, type: 3}
+  characterName: Warrior Waldi
+  characterAttentionValue: 0
+  characterClass: 2
+  currentCharacterPlace: 4
+  desiredObjects:
+  - {fileID: 11400000, guid: cc4a97f31acc7bd4a99cea415f60fe7b, type: 2}
+  _characterDialogue_Tavern: []
+  _characterDialogue_TownCenter: []
+  _characterDialogue_Forest: []
+  _characterDialogue_MagicShop: []
+  _characterDialogue_Blacksmith: []

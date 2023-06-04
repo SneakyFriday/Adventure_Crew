@@ -26,47 +26,77 @@ MonoBehaviour:
   _characterDialogue_Tavern:
   - "<i><b>Als du die Taverne betrittst, steigt dir der Duft von leckerem Essen sowie
     frischen Hopfen in die Nase. Ein freundliches Gesicht schmunzelt dir zu, w\xE4hrend
-    du weiter in den Raum gehst. Sie winkt dich zu sich her\xFCber.</i></b>"
-  - Hey, du scheinst neu hier in der Stadt zu sein. Was treibt dich hier her? Hoffentlich
-    nicht dee gute Wein, das ist uns leider ausgegangen.
-  - 1. Ich mag lieber Bier. Aber was geschah? 2. Der gute Wein. Was ist passiert?
+    du weiter in den Raum gehst. Sie winkt dich zu sich her\xFCber.</i></b>\nHey,
+    du scheinst neu hier in der Stadt zu sein. Was treibt dich hier her? Hoffentlich
+    nicht der gute Wein, das ist uns leider ausgegangen."
   - "Zun\xE4chst dachten wir, Banditen h\xE4tten die w\xF6chentliche Lieferung abgefangen.
     Ihr m\xFCsst wissen, dass dies hier nicht selten vorkommt. Doch dann erfuhren
     wir, dass die Stra\xDFen nach Norden vor kurzem durch einen heftigen Erdrutscht
     unpassierbar gemacht wurden."
-  - "1. Banditen... 2. Ein Ungl\xFCck?"
   - "Die einen erz\xE4hlen, dass es ein Erdbeben war. Die anderen erz\xE4hlen von
     einem dumpfen markersch\xFCtternden Br\xFCllen, dass die Erde zum Ersch\xFCttern
-    gebracht hat."
-  - "<i><b>Sie scheint zun\xE4chst besorgt, aber dann siehst du ihre Augen aufleuchten
-    und wie sie ihre Faust mit einem Anflug eines L\xE4cheln zu ballen beginnt</i></b>"
+    gebracht hat.\n<i><b>Sie scheint zun\xE4chst besorgt, aber dann siehst du ihre
+    Augen aufleuchten und wie sie ihre Faust mit einem Anflug eines L\xE4cheln zu
+    ballen beginnt</i></b>"
   - "Beides eher unheimliche Vorzeichen... und Vorzeichen f\xFCr ein gro\xDFen Abenteuer.
     Ihr seht es doch auch so oder?"
-  - 1. Wo die Abenteuer sind, da bin auch ich. 2. Ich bin ebenfalls auf der Suche
-    nach Abenteuern
   - "Ein Abenteurer, mh? Nun dann kannst du dich hier wohl in bester Gesellschaft
     wiegen. Es gibt hier viele, die gerne mal losziehen w\xFCrden. Den meisten fehlt
     jedoch eine gute Gruppe..."
-  - "1. Ich w\xFCrde der Sache gerne auf den Grund gehen, wie siehts aus? 2. Ich
-    suche noch Leute f\xFCr meine wackere Truppe"
   - "Du suchst Leute f\xFCr eine abenteuerliche Reise? Nun, wie gesagt... einige
-    w\xFCrden gerne losziehen. Auch ich..."
-  - <b><i>sie schmunzelt etwas, wird dann aber nachdenklich</b></i>
+    w\xFCrden gerne losziehen. Auch ich...\n<b><i>Sie schmunzelt etwas, wird dann
+    aber nachdenklich</b></i>"
   - "Mir fehlen jedoch einige Pfeile. Ohne sie bin ich im Kampf nicht hilfreich.
     K\xF6nntest du mir ein paar besorgen? Ich h\xF6rte, dass im Waldlager welche
     zu finden seien."
-  - "1. Nat\xFCrlich, ich k\xFCmmere mich darum 2. Daf\xFCr habe ich keine Zeit"
   - "Nun dann...es war sch\xF6n mit dir zu reden. Vielleicht sehen wir uns ja noch
     einmal wieder"
+  _characterDialogue_Tavern_answers:
+  - Ich mag lieber Bier. Aber was geschah?
+  - Der gute Wein. Was ist passiert?
+  - Banditen...
+  - "Ein Ungl\xFCck?"
+  - Ok?
+  - Hm...
+  - Wo die Abenteuer sind, da bin auch ich.
+  - Ich bin ebenfalls auf der Suche nach Abenteuern
+  - "Ich suche noch Leute f\xFCr meine wackere Truppe"
+  - "Ich w\xFCrde der Sache gerne auf den Grund gehen, wie siehts aus?"
+  - Und?
+  - Was ist los?
+  - "Nat\xFCrlich, ich k\xFCmmere mich darum"
+  - "Ich werde sehen, was sich machen l\xE4sst..."
+  - Bis bald!
+  - Wir werden sehen...
   _characterDialogue_TownCenter:
   - Town Center Dialogue Line
   - Another Town Center Dialogue Line
+  _characterDialogue_TownCenter_answers:
+  - text1
+  - text2
+  - text3
+  - text4
   _characterDialogue_Forest:
   - Forest Dialogue Line
   - Another Forest Dialogue Line
+  _characterDialogue_Forest_answers:
+  - text4
+  - text4
+  - text4
+  - text4
   _characterDialogue_MagicShop:
   - Magic Shop Dialogue Line
   - Another Magic Shop Dialogue Line
+  _characterDialogue_MagicShop_answers:
+  - 1
+  - 2
+  - 3
+  - 4
   _characterDialogue_Blacksmith:
   - Blacksmith Dialogue Line
   - Another Blacksmith Dialogue Line
+  _characterDialogue_Blacksmith_answers:
+  - 1
+  - 2
+  - 3
+  - 4

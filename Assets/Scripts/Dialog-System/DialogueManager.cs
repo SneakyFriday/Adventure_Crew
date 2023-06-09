@@ -93,6 +93,8 @@ public class DialogueManager : MonoBehaviour
     // Display the next sentence
     private void DisplayNextSentence()
     {
+        // TODO: Flag einbauen, der prüft, ob der Spieler schon gewünschte Item gefunden hat
+        
         print("DisplayNextSentence() called ::: _sentences.Count = " + _sentences.Count +
               " ::: _currentDialogueIndex = " + _currentDialogueIndex + " ::: _currentDialogue.Length = " +
               _currentDialogue.Length);

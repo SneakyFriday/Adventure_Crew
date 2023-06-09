@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [Header("Button Hover Effect")]
+    [Range(1f, 2f)]
+    [SerializeField] private float _scaleUpFactor = 1.05f;
     private RectTransform btnRect;
 
     // Holt sich die RectTransform des Buttons.
@@ -14,7 +17,7 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
     // Vergrößert den Button, wenn der Mauszeiger darüber ist.
     public void OnPointerEnter(PointerEventData eventData)
     {
-        var newSize = new Vector3(1.05f, 1.05f, 1.05f);
+        var newSize = new Vector3(_scaleUpFactor, _scaleUpFactor, _scaleUpFactor);
         btnRect.localScale = Vector3.Lerp(btnRect.localScale, newSize, .5f);
     }
 

@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Resolution[] resolutions;
+    private Canvas _canvas;
 
     public static MenuController Instance;
 
@@ -27,6 +28,8 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        _canvas = GetComponent<Canvas>();
+        
         // Get available resolutions and add them to the dropdown
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -79,10 +82,10 @@ public class MenuController : MonoBehaviour
         var resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    
+
     public void SetMenuActive(bool isActive)
     {
-        gameObject.SetActive(isActive);
+        _canvas.enabled = isActive;
     }
 }
 

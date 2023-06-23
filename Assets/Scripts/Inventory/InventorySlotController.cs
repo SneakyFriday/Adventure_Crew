@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,5 +11,11 @@ public class InventorySlotController : MonoBehaviour, IDropHandler
         if (transform.childCount != 0) return;
         var inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
         inventoryItem.parentAfterDrag = transform;
+        CheckComparison(inventoryItem.GetItem());
+    }
+
+    private void CheckComparison(SO_Item item)
+    {
+        if(item.itemName == "Arrows") print("Item dropped: " + item.itemName);
     }
 }

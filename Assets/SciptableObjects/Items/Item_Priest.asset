@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Priest
   m_EditorClassIdentifier: 
   itemName: Priest Item
-  itemSprite: {fileID: 21300000, guid: d4578e1a5ceeaf147872085823dc4e72, type: 3}
+  itemSprite: {fileID: 21300000, guid: 01e77d20268c10549970c6e3787cd10e, type: 3}
   characterItemType: 1
   isCharacterItem: 1
   stackable: 1

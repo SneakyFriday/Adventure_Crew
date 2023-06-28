@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 5260899443246303706}
   - component: {fileID: 5260899443246303707}
   - component: {fileID: 5260899443246303708}
+  - component: {fileID: 1002902648}
   m_Layer: 5
   m_Name: Btn_ExitMenu
   m_TagString: Untagged
@@ -742,8 +743,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 286}
-  m_SizeDelta: {x: 94, y: 91}
+  m_AnchoredPosition: {x: 1765.3801, y: 957.00635}
+  m_SizeDelta: {x: 133.2396, y: 128.9873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5260899443246303706
 CanvasRenderer:
@@ -826,19 +827,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5260899443246303707}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5260899443119999531}
-        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
-        m_MethodName: SetMenuActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1002902648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260899443246303710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c0438f7dffc7342b5a3ed65dc3839b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleObject: {fileID: 5260899443119999533}
+  button: {fileID: 5260899443246303708}
 --- !u!1 &5260899443270769658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3137255, g: 0.26666668, b: 0.23137257, a: 0.95686275}
+  m_Color: {r: 0.23921569, g: 0.2784314, b: 0.33333334, a: 0.95686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3118,7 +3121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

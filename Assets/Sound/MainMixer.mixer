@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SFXVolume
+  m_Name: sfxVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f8e97a5bc8f9f1e4a81df92b89b09339
   m_Children: []
@@ -15,7 +15,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -39786768446447577}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -25,7 +25,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BGMVolume
+  m_Name: bgmVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 43d91190c7f1e1940875cb579fa13026
   m_Children: []
@@ -34,7 +34,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -1226598035728627908}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -83,11 +83,11 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: af2d0144cf7507449bd09d678515c574
-    name: BGMVolume
+    name: bgmVolume
   - guid: 9c654afd3193c8f4fa9a0cd6be81b7b8
     name: MasterVolume
   - guid: 38bb361b00035b2439d938f19f90c2fc
-    name: SFXVolume
+    name: sfxVolume
   m_AudioMixerGroupViews:
   - guids:
     - 62eddcf12ceb7264aaf3efe37bef96bf
@@ -113,7 +113,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

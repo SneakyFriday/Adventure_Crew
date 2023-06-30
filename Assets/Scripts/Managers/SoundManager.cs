@@ -4,12 +4,11 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioMixer mixer;
-    public AudioSource bgmSource;
-    public AudioSource sfxSource;
     public static SoundManager Instance;
-    [SerializeField] private AudioClip[] bgmClips;
-    [SerializeField] private AudioClip[] sfxClips;
+    
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private AudioSource bgmSource, sfxSource;
+    [SerializeField] private AudioClip[] bgmClips, sfxClips;
 
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
@@ -34,8 +33,8 @@ public class SoundManager : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", sfxVolume);
 
         // Set the initial volumes for the audio mixer groups
-        mixer.SetFloat("BGMVolume", Mathf.Log10(bgmVolume) * 20);
-        mixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20);
+        mixer.SetFloat("bgmVolume", Mathf.Log10(bgmVolume) * 20);
+        mixer.SetFloat("sfxVolume", Mathf.Log10(sfxVolume) * 20);
 
         // Set the initial volumes for the audio sources
         bgmSource.volume = bgmVolume;
@@ -45,7 +44,7 @@ public class SoundManager : MonoBehaviour
     public void SetBGMVolume(float volume)
     {
         // Update the audio mixer group volume for BGM
-        mixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
+        mixer.SetFloat("bgmVolume", Mathf.Log10(volume) * 20);
 
         // Update the volume for the audio source
         bgmSource.volume = volume;
@@ -59,7 +58,7 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         // Update the audio mixer group volume for SFX
-        mixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
+        mixer.SetFloat("sfxVolume", Mathf.Log10(volume) * 20);
 
         // Update the volume for the audio source
         sfxSource.volume = volume;
@@ -79,5 +78,15 @@ public class SoundManager : MonoBehaviour
     public void PlaySfx(int index)
     {
         sfxSource.PlayOneShot(sfxClips[index]);
+    }
+    
+    public float GetBgmVolume()
+    {
+        return bgmVolume;
+    }
+    
+    public float GetSfxVolume()
+    {
+        return sfxVolume;
     }
 }

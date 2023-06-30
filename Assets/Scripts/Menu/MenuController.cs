@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Resolution[] resolutions;
     private Canvas _canvas;
@@ -30,7 +29,7 @@ public class MenuController : MonoBehaviour
     {
         _canvas = GetComponent<Canvas>();
         
-        // Get available resolutions and add them to the dropdown
+        // ::: RESOLUTION ::: Get available resolutions and add them to the dropdown
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
@@ -50,21 +49,17 @@ public class MenuController : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
     }
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("BGMVolume", volume);
+        SoundManager.Instance.SetBGMVolume(volume);
     }
 
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFXVolume", volume);
-    }
-
-    public void SetVoiceVolume(float volume)
-    {
-        audioMixer.SetFloat("VoiceVolume", volume);
+        SoundManager.Instance.SetSFXVolume(volume);
     }
 
     public void SetQuality(int qualityIndex)

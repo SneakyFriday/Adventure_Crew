@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource bgmSource, sfxSource;
     [SerializeField] private AudioClip[] bgmClips, sfxClips;
+    [SerializeField] private AudioClip introClip;
 
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
@@ -78,6 +79,12 @@ public class SoundManager : MonoBehaviour
     public void PlaySfx(int index)
     {
         sfxSource.PlayOneShot(sfxClips[index]);
+    }
+    
+    public void PlayIntro()
+    {
+        bgmSource.clip = introClip;
+        bgmSource.Play();
     }
     
     public float GetBgmVolume()

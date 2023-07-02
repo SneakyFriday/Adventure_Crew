@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3158606149741786903}
   - component: {fileID: 3158606149741786902}
+  - component: {fileID: 4263030918642268886}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -311,3 +312,33 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4c38c0ce29a69ad40b2e272370970c87, type: 3}
   sfxClips: []
   introClip: {fileID: 8300000, guid: 69bb01969e8e39c48bec464384e4245a, type: 3}
+--- !u!114 &4263030918642268886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158606149741786897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 74dbf486df9121b489c20f56970950ea, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3158606149741786902}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayIntro
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

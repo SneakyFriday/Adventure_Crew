@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: d1350deba8fa0ea4d807a65b7c93e024
   - enabled: 1
-    path: Assets/Scenes/IntroCinematic.unity
+    path: Assets/Scenes/IntroScreen.unity
     guid: c8e661ab0063ef149b5e511591e1963d
   - enabled: 1
     path: Assets/Scenes/GameScreen.unity

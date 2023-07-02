@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.Instance.LoadScene(SceneIndexes.GAMESCREEN.ToString());
     }
+    
+    public void LoadIntro()
+    {
+        LevelManager.Instance.LoadScene(SceneIndexes.INTROSCREEN.ToString());
+    }
 
     public void LoadMainMenu()
     {

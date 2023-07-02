@@ -96,4 +96,9 @@ public class SoundManager : MonoBehaviour
     {
         return sfxVolume;
     }
+
+    public void StopMusic()
+    {
+        bgmSource.Stop();
+    }
 }

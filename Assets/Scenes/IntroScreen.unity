@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 207084095}
   - component: {fileID: 207084097}
   m_Layer: 0
-  m_Name: TriggerMusicReceiver
+  m_Name: TriggerReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,8 +330,8 @@ MonoBehaviour:
   m_text: Die Geschichte beginnt mit dir, strebend nach Abenteuern. Allein bist du
     losgezogen, um dir einen Namen zu machen.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfef95698dae5654da895147acd24cc4, type: 2}
-  m_sharedMaterial: {fileID: -7784874200747135777, guid: cfef95698dae5654da895147acd24cc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80e2adc0e31095240af6688bc780e6e5, type: 2}
+  m_sharedMaterial: {fileID: 5903788593015327572, guid: 80e2adc0e31095240af6688bc780e6e5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -330,8 +330,8 @@ MonoBehaviour:
   m_text: Die Geschichte beginnt mit dir, strebend nach Abenteuern. Allein bist du
     losgezogen, um dir einen Namen zu machen.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 80e2adc0e31095240af6688bc780e6e5, type: 2}
-  m_sharedMaterial: {fileID: 5903788593015327572, guid: 80e2adc0e31095240af6688bc780e6e5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df580b32c25d419449812a4aee2b533f, type: 2}
+  m_sharedMaterial: {fileID: 8396332693453260622, guid: df580b32c25d419449812a4aee2b533f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -355,8 +355,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -910,8 +910,8 @@ MonoBehaviour:
     machtest du dich auf, nach eben diesen zu suchen - keine Vorstellung davon, was
     dich erwarten w\xFCrde..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfef95698dae5654da895147acd24cc4, type: 2}
-  m_sharedMaterial: {fileID: -7784874200747135777, guid: cfef95698dae5654da895147acd24cc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df580b32c25d419449812a4aee2b533f, type: 2}
+  m_sharedMaterial: {fileID: 8396332693453260622, guid: df580b32c25d419449812a4aee2b533f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -935,19 +935,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 12
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1140,8 +1140,8 @@ MonoBehaviour:
     Sie besangen einen Drachen, tief in seinem Hort. Dieser Drache sollte einen Schatz
     angesammelt und versteckt haben.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfef95698dae5654da895147acd24cc4, type: 2}
-  m_sharedMaterial: {fileID: -7784874200747135777, guid: cfef95698dae5654da895147acd24cc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df580b32c25d419449812a4aee2b533f, type: 2}
+  m_sharedMaterial: {fileID: 8396332693453260622, guid: df580b32c25d419449812a4aee2b533f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1165,19 +1165,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 8
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 1165172223}
   - component: {fileID: 1165172222}
   m_Layer: 5
-  m_Name: SecondTxt
+  m_Name: 3_txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,8 +1329,8 @@ MonoBehaviour:
   m_text: "Lang war die Wanderung. Doch getrieben von der M\xF6glichkeit eines Abenteuers,
     hattest du es irgendwann nach Terth, der Hauptstadt von Valandria geschafft."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfef95698dae5654da895147acd24cc4, type: 2}
-  m_sharedMaterial: {fileID: -7784874200747135777, guid: cfef95698dae5654da895147acd24cc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df580b32c25d419449812a4aee2b533f, type: 2}
+  m_sharedMaterial: {fileID: 8396332693453260622, guid: df580b32c25d419449812a4aee2b533f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1354,8 +1354,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 15
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1981,8 +1981,8 @@ MonoBehaviour:
   m_text: "Du warst jedoch allein. Und wie sagte deine Mutter immer? \"Wer alleine
     rudert, f\xE4hrt im Kreis\""
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfef95698dae5654da895147acd24cc4, type: 2}
-  m_sharedMaterial: {fileID: -7784874200747135777, guid: cfef95698dae5654da895147acd24cc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df580b32c25d419449812a4aee2b533f, type: 2}
+  m_sharedMaterial: {fileID: 8396332693453260622, guid: df580b32c25d419449812a4aee2b533f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2006,12 +2006,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 15
+  m_fontSizeMax: 50
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

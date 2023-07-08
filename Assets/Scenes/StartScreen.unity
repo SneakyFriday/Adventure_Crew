@@ -682,6 +682,11 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!82 &1071826685 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3158606148759111457, guid: 0edf95311072cf548a99241350c4a4bd, type: 3}
+  m_PrefabInstance: {fileID: 3158606149731099338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1212598470
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +699,7 @@ GameObject:
   - component: {fileID: 1212598474}
   - component: {fileID: 1212598473}
   - component: {fileID: 1212598472}
+  - component: {fileID: 1212598475}
   m_Layer: 5
   m_Name: CreditsBtn
   m_TagString: Untagged
@@ -741,7 +747,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 0.25490198}
@@ -791,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -816,6 +822,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212598470}
   m_CullTransparentMesh: 1
+--- !u!114 &1212598475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212598470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d39314f83954e44c9f20ad7fe4f4b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleUpFactor: 1.05
+  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
 --- !u!1 &1398102293
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +984,7 @@ GameObject:
   - component: {fileID: 1436762125}
   - component: {fileID: 1436762124}
   - component: {fileID: 1436762127}
+  - component: {fileID: 1436762128}
   m_Layer: 5
   m_Name: MenuBtn
   m_TagString: Untagged
@@ -1011,7 +1032,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 0.25490198}
@@ -1049,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1088,6 +1109,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleObject: {fileID: 1527540242}
   button: {fileID: 1436762124}
+--- !u!114 &1436762128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436762122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d39314f83954e44c9f20ad7fe4f4b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleUpFactor: 1.05
+  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
 --- !u!1 &1527540242 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5260899443119999533, guid: d5912f315d5a14c489b03339ad6fd602, type: 3}
@@ -1105,6 +1140,7 @@ GameObject:
   - component: {fileID: 1535263261}
   - component: {fileID: 1535263260}
   - component: {fileID: 1535263259}
+  - component: {fileID: 1535263262}
   m_Layer: 5
   m_Name: QuitBtn
   m_TagString: Untagged
@@ -1152,7 +1188,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 0.25490198}
@@ -1202,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1227,6 +1263,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535263257}
   m_CullTransparentMesh: 1
+--- !u!114 &1535263262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535263257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d39314f83954e44c9f20ad7fe4f4b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleUpFactor: 1.05
+  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
 --- !u!1 &1559167410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1397,7 @@ GameObject:
   - component: {fileID: 1704733524}
   - component: {fileID: 1704733523}
   - component: {fileID: 1704733526}
+  - component: {fileID: 1704733527}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -1394,7 +1445,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.26665512, g: 0.19335175, b: 0.745283, a: 0.25490198}
@@ -1419,6 +1470,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1071826685}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 860380570}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadIntro
@@ -1444,7 +1507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1490,6 +1553,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1704733527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704733521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d39314f83954e44c9f20ad7fe4f4b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleUpFactor: 1.05
+  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
 --- !u!1 &1779707787
 GameObject:
   m_ObjectHideFlags: 0

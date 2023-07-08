@@ -8,9 +8,10 @@ public class SoundManager : MonoBehaviour
     
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private AudioSource bgmSource, sfxSource;
-    [SerializeField] private AudioClip[] bgmClips, sfxClips;
+    [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private AudioClip introClip;
 
+    public static AudioMixerGroup bgmMixerGroup, sfxMixerGroup;
     private float bgmVolume = 0.5f;
     private float sfxVolume = 0.5f;
 
@@ -29,6 +30,10 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        // Get the audio mixer groups
+        bgmMixerGroup = mixer.FindMatchingGroups("Master")[1];
+        sfxMixerGroup = mixer.FindMatchingGroups("Master")[2];
+
         // Load the saved volume settings from PlayerPrefs or a config file
         bgmVolume = PlayerPrefs.GetFloat("bgmVolume", bgmVolume);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", sfxVolume);
@@ -70,17 +75,13 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    public void PlayBGM(int index)
+    public void PlayBGM(int index, AudioMixerGroup bgmMixerGroup)
     {
         bgmSource.clip = bgmClips[index];
+        bgmSource.outputAudioMixerGroup = bgmMixerGroup;
         bgmSource.Play();
     }
-    
-    public void PlaySfx(int index)
-    {
-        sfxSource.PlayOneShot(sfxClips[index]);
-    }
-    
+
     public void PlayIntro()
     {
         bgmSource.clip = introClip;
@@ -100,5 +101,12 @@ public class SoundManager : MonoBehaviour
     public void StopMusic()
     {
         bgmSource.Stop();
+    }
+
+    public void PlaySFX(AudioClip hoverSound, AudioMixerGroup sfxMixerGroup)
+    {
+        sfxSource.clip = hoverSound;
+        sfxSource.outputAudioMixerGroup = sfxMixerGroup;
+        sfxSource.Play();
     }
 }

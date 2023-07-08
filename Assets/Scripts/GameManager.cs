@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Play Intro Music
-        SoundManager.Instance.PlayBGM(0);
+        SoundManager.Instance.PlayBGM(0, SoundManager.bgmMixerGroup);
     }
 
     public void QuitGame()

@@ -50,7 +50,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -310,7 +310,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e38efcb327d87fb4c8db92fe0b5adaf4, type: 3}
   - {fileID: 8300000, guid: 907c28a54028a8542a14baafa94fb2dd, type: 3}
   - {fileID: 8300000, guid: 4c38c0ce29a69ad40b2e272370970c87, type: 3}
-  sfxClips: []
   introClip: {fileID: 8300000, guid: 69bb01969e8e39c48bec464384e4245a, type: 3}
 --- !u!114 &4263030918642268886
 MonoBehaviour:

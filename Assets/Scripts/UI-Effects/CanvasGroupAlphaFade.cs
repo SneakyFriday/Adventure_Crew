@@ -4,36 +4,36 @@ using UnityEngine;
 
 public class CanvasGroupAlphaFade : MonoBehaviour
 {
-    public CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroupFadeOut, canvasGroupFadeIn;
     public float startAlpha;
     public float endAlpha;
     public float lerpTime = 1f;
     
     public void FadeCanvasGroup()
     {
-        StartCoroutine(FadeCanvasGroupCoroutine());
-        //StartCoroutine(FadeRoutine(canvasGroup, canvasGroup));
+        //StartCoroutine(FadeCanvasGroupCoroutine());
+        StartCoroutine(FadeRoutine(canvasGroupFadeOut, canvasGroupFadeIn));
     }
     
-    private IEnumerator FadeCanvasGroupCoroutine()
-    {
-        var timeStartedLerping = Time.time;
-        var timeSinceStarted = Time.time - timeStartedLerping;
-        var percentageComplete = timeSinceStarted / lerpTime;
-        
-        while (true)
-        {
-            timeSinceStarted = Time.time - timeStartedLerping;
-            percentageComplete = timeSinceStarted / lerpTime;
-            
-            var currentValue = Mathf.Lerp(startAlpha, endAlpha, percentageComplete);
-            canvasGroup.alpha = currentValue;
-            
-            if (percentageComplete >= 1) break;
-            
-            yield return new WaitForEndOfFrame();
-        }
-    }
+    // private IEnumerator FadeCanvasGroupCoroutine()
+    // {
+    //     var timeStartedLerping = Time.time;
+    //     var timeSinceStarted = Time.time - timeStartedLerping;
+    //     var percentageComplete = timeSinceStarted / lerpTime;
+    //     
+    //     while (true)
+    //     {
+    //         timeSinceStarted = Time.time - timeStartedLerping;
+    //         percentageComplete = timeSinceStarted / lerpTime;
+    //         
+    //         var currentValue = Mathf.Lerp(startAlpha, endAlpha, percentageComplete);
+    //         canvasGroup.alpha = currentValue;
+    //         
+    //         if (percentageComplete >= 1) break;
+    //         
+    //         yield return new WaitForEndOfFrame();
+    //     }
+    // }
     
     private IEnumerator FadeRoutine(CanvasGroup fadeOutCanvas, CanvasGroup fadeInCanvas)
     {
@@ -44,12 +44,12 @@ public class CanvasGroupAlphaFade : MonoBehaviour
     
     private IEnumerator FadeMenuRoutine(CanvasGroup canvasGroupToFade)
     {
-        var fadeStart = canvasGroup.alpha;
-        var fadeTarget = canvasGroup.alpha == 0 ? 1 : 0;
-        var boolTarget = !canvasGroup.interactable;
+        var fadeStart = canvasGroupToFade.alpha;
+        var fadeTarget = canvasGroupToFade.alpha == 0 ? 1 : 0;
+        var boolTarget = !canvasGroupToFade.interactable;
 
-        canvasGroup.interactable = boolTarget;
-        canvasGroup.blocksRaycasts = boolTarget;
+        canvasGroupToFade.interactable = boolTarget;
+        canvasGroupToFade.blocksRaycasts = boolTarget;
 
         var startTime = Time.time;
 
@@ -58,7 +58,7 @@ public class CanvasGroupAlphaFade : MonoBehaviour
             yield return null;
             var t = (Time.time - startTime) / lerpTime;
             var alphaValue = Mathf.SmoothStep(fadeStart, fadeTarget, t);
-            canvasGroup.alpha = alphaValue;
+            canvasGroupToFade.alpha = alphaValue;
         }
     }
 }

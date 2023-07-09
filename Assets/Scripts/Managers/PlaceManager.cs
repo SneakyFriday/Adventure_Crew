@@ -17,7 +17,7 @@ public class PlaceManager : MonoBehaviour
     [Tooltip("Place Name Object here")]
     [SerializeField] private TextMeshProUGUI placeName;
     [Tooltip("CanvasGroup for Fade In Fade Out")]
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup actualCanvasGroup, targetCanvasGroup;
     [SerializeField] private CanvasGroupAlphaFade canvasGroupAlphaFade;
 
     private PlaceIndexes _currentPlace;
@@ -39,11 +39,12 @@ public class PlaceManager : MonoBehaviour
     
     public void ChangePlace(string placeIndex)
     {
+        // Set canvas groups to actual and target
+        actualCanvasGroup = 
         
         // Fade In fade Out
-        canvasGroupAlphaFade.canvasGroup = canvasGroup;
-        canvasGroupAlphaFade.startAlpha = 0f;
-        canvasGroupAlphaFade.endAlpha = 1f;
+        canvasGroupAlphaFade.canvasGroupFadeOut = actualCanvasGroup;
+        canvasGroupAlphaFade.canvasGroupFadeIn = targetCanvasGroup;
         canvasGroupAlphaFade.lerpTime = 1f;
         canvasGroupAlphaFade.FadeCanvasGroup();
         

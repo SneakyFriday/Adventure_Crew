@@ -826,6 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.2
+  hoverSound: {fileID: 0}
 --- !u!1 &96188052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.2
+  hoverSound: {fileID: 0}
 --- !u!1001 &175629231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1901,6 +1903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.2
+  hoverSound: {fileID: 0}
 --- !u!1 &355864531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!114 &471855890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4360,6 +4364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!1 &770328792
 GameObject:
   m_ObjectHideFlags: 0
@@ -4389,7 +4394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d58aaaeecb00e46bd3c5d24b872d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
+  canvasGroupFadeOut: {fileID: 0}
+  canvasGroupFadeIn: {fileID: 0}
   startAlpha: 0
   endAlpha: 0
   lerpTime: 1
@@ -6206,6 +6212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!1 &1098439049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6795,6 +6802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!114 &1169399030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8118,7 +8126,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab035f11ca84996468fca6bd90e668f0, type: 2}
   sceneBackground: {fileID: 661142535}
   placeName: {fileID: 1997071814}
-  canvasGroup: {fileID: 1348741418}
+  actualCanvasGroup: {fileID: 1348741418}
+  targetCanvasGroup: {fileID: 1348741418}
   canvasGroupAlphaFade: {fileID: 770328793}
   onPlaceChanged:
     m_PersistentCalls:
@@ -8135,7 +8144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d58aaaeecb00e46bd3c5d24b872d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
+  canvasGroupFadeOut: {fileID: 0}
+  canvasGroupFadeIn: {fileID: 0}
   startAlpha: 0
   endAlpha: 0
   lerpTime: 1
@@ -8341,6 +8351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.2
+  hoverSound: {fileID: 0}
 --- !u!1 &1436374595
 GameObject:
   m_ObjectHideFlags: 0
@@ -9073,6 +9084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.2
+  hoverSound: {fileID: 0}
 --- !u!1 &1524710603
 GameObject:
   m_ObjectHideFlags: 0
@@ -10668,6 +10680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!114 &1703724489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11433,6 +11446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!224 &1809655993 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6668120732175366439, guid: be9c4586c2bbfab4bb39c50863d52649, type: 3}
@@ -12395,6 +12409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!1 &1997071812
 GameObject:
   m_ObjectHideFlags: 0
@@ -13441,6 +13456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
+  hoverSound: {fileID: 0}
 --- !u!114 &2144691104
 MonoBehaviour:
   m_ObjectHideFlags: 0

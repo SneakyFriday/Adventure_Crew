@@ -17,17 +17,22 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button btnLeft;
     [SerializeField] private Button btnRight;
 
-    // Setup the Character Dialogue Queues
-    private Queue<string> _sentencesQueueFirstMet;
-    private Queue<string> _sentencesQueueMainMet;
-    private Queue<string> _sentencesQueueInterceptMet;
-    private Queue<string> _sentencesQueueCompletionMet;
-    
-    // Setup the Player/Button Answers Queues
-    private Queue<string> _answersQueueFirstMet;
-    private Queue<string> _answersQueueMainMet;
-    private Queue<string> _answersQueueInterceptMet;
-    private Queue<string> _answersQueueCompletionMet;
+    // // Setup the Character Dialogue Queues
+    // private Queue<string> _sentencesQueueFirstMet;
+    // private Queue<string> _sentencesQueueMainMet;
+    // private Queue<string> _sentencesQueueInterceptMet;
+    // private Queue<string> _sentencesQueueCompletionMet;
+    //
+    // // Setup the Player/Button Answers Queues
+    // private Queue<string> _answersQueueFirstMet;
+    // private Queue<string> _answersQueueMainMet;
+    // private Queue<string> _answersQueueInterceptMet;
+    // private Queue<string> _answersQueueCompletionMet;
+
+    private SentenceAnswer _sentenceFirstMet;
+    private SentenceAnswer _sentenceMainMet;
+    private SentenceAnswer _sentenceInterceptMet;
+    private SentenceAnswer _sentenceCompletionMet;
     
     // Sentences and Answers Properties
     private string _currentSentence;
@@ -66,17 +71,17 @@ public class DialogueManager : MonoBehaviour
         _currentCharacterAtPlace = FindObjectOfType<Character>();
         _currentCharacterAtPlace.onCharacterDialogue += InitDialogue;
 
-        // Setup the dialogue queues
-        _sentencesQueueFirstMet = new Queue<string>();
-        _sentencesQueueMainMet = new Queue<string>();
-        _sentencesQueueInterceptMet = new Queue<string>();
-        _sentencesQueueCompletionMet = new Queue<string>();
-        
-        // Setup the answers queues
-        _answersQueueFirstMet = new Queue<string>();
-        _answersQueueMainMet = new Queue<string>();
-        _answersQueueInterceptMet = new Queue<string>();
-        _answersQueueCompletionMet = new Queue<string>();
+        // // Setup the dialogue queues
+        // _sentencesQueueFirstMet = new Queue<string>();
+        // _sentencesQueueMainMet = new Queue<string>();
+        // _sentencesQueueInterceptMet = new Queue<string>();
+        // _sentencesQueueCompletionMet = new Queue<string>();
+        //
+        // // Setup the answers queues
+        // _answersQueueFirstMet = new Queue<string>();
+        // _answersQueueMainMet = new Queue<string>();
+        // _answersQueueInterceptMet = new Queue<string>();
+        // _answersQueueCompletionMet = new Queue<string>();
 
         // Setup the button listeners
         btnLeft.onClick.AddListener(DisplayNextSentence);
@@ -97,20 +102,20 @@ public class DialogueManager : MonoBehaviour
         _currentDialogueIndex = 0;
         dialogueBox.SetActive(true);
 
-        // Clear the sentences queue
-        _sentencesQueueMainMet.Clear();
-
-        // Add the sentences to the queue
-        foreach (var sentence in _currentMainDialogue)
-        {
-            _sentencesQueueMainMet.Enqueue(sentence);
-        }
-
-        // Add the answers to the buttons
-        foreach (var answer in _currentMainDialogueAnswers)
-        {
-            _answersQueueMainMet.Enqueue(answer);
-        }
+        // // Clear the sentences queue
+        // _sentencesQueueMainMet.Clear();
+        //
+        // // Add the sentences to the queue
+        // foreach (var sentence in _currentMainDialogue)
+        // {
+        //     _sentencesQueueMainMet.Enqueue(sentence);
+        // }
+        //
+        // // Add the answers to the buttons
+        // foreach (var answer in _currentMainDialogueAnswers)
+        // {
+        //     _answersQueueMainMet.Enqueue(answer);
+        // }
         
         DisplayNextSentence();
     }
@@ -118,11 +123,11 @@ public class DialogueManager : MonoBehaviour
     // Display the next sentence
     private void DisplayNextSentence()
     {
-        // Check Character Flags
-        if(_currentCharacter.firstMet) Dialogue(_sentencesQueueFirstMet, _answersQueueFirstMet);
-        else if(_currentCharacter.mainMet) Dialogue(_sentencesQueueMainMet, _answersQueueMainMet);
-        else if(_currentCharacter.interceptMet) Dialogue(_sentencesQueueInterceptMet, _answersQueueInterceptMet);
-        else if(_currentCharacter.completionMet) Dialogue(_sentencesQueueCompletionMet, _answersQueueCompletionMet);
+        // // Check Character Flags
+        // if(_currentCharacter.firstMet) Dialogue(_sentencesQueueFirstMet, _answersQueueFirstMet);
+        // else if(_currentCharacter.mainMet) Dialogue(_sentencesQueueMainMet, _answersQueueMainMet);
+        // else if(_currentCharacter.interceptMet) Dialogue(_sentencesQueueInterceptMet, _answersQueueInterceptMet);
+        // else if(_currentCharacter.completionMet) Dialogue(_sentencesQueueCompletionMet, _answersQueueCompletionMet);
     }
 
     private void Dialogue(Queue<string> sentencesQueue, Queue<string> answersQueue)

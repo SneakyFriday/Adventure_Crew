@@ -69,6 +69,12 @@ public class SO_Character : ScriptableObject
     [TextArea(1, 2)]
     [SerializeField] private string[] _characterDialogue_Blacksmith_answers;
 
+    [Header("Interaction Flags")] 
+    public bool firstMet;
+    public bool mainMet;
+    public bool interceptMet;
+    public bool completionMet;
+
     #endregion
 
     /**
@@ -78,6 +84,9 @@ public class SO_Character : ScriptableObject
     {
         // Reset Values
         characterAttentionValue = 0;
+        
+        // Set first Interaction Flag
+        firstMet = true;
 
         // TODO: Use a loop to do this instead of hardcoding it.
         // TODO: Use tuples.

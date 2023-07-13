@@ -17,15 +17,34 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Button btnLeft;
     [SerializeField] private Button btnRight;
 
-    private Queue<string> _sentences;
-    private Queue<string> _answers;
+    // Setup the Character Dialogue Queues
+    private Queue<string> _sentencesQueueFirstMet;
+    private Queue<string> _sentencesQueueMainMet;
+    private Queue<string> _sentencesQueueInterceptMet;
+    private Queue<string> _sentencesQueueCompletionMet;
+    
+    // Setup the Player/Button Answers Queues
+    private Queue<string> _answersQueueFirstMet;
+    private Queue<string> _answersQueueMainMet;
+    private Queue<string> _answersQueueInterceptMet;
+    private Queue<string> _answersQueueCompletionMet;
+    
+    // Sentences and Answers Properties
     private string _currentSentence;
     private string _currentAnswer;
+    private string[] _currentFirstDialogue;
+    private string[] _currentFirstDialogueAnswers;
+    private string[] _currentMainDialogue;
+    private string[] _currentMainDialogueAnswers;
+    private string[] _currentInterceptDialogue;
+    private string[] _currentInterceptDialogueAnswers;
+    private string[] _currentCompletionDialogue;
+    private string[] _currentCompletionDialogueAnswers;
+    private int _currentDialogueIndex;
+    
+    // Character and Place Properties
     private SO_Character _currentCharacter;
     private PlaceIndexes _currentPlace;
-    private string[] _currentDialogue;
-    private string[] _currentDialogueAnswers;
-    private int _currentDialogueIndex;
     private Character _currentCharacterAtPlace;
 
     private void Awake()
@@ -47,8 +66,17 @@ public class DialogueManager : MonoBehaviour
         _currentCharacterAtPlace = FindObjectOfType<Character>();
         _currentCharacterAtPlace.onCharacterDialogue += InitDialogue;
 
-        _sentences = new Queue<string>();
-        _answers = new Queue<string>();
+        // Setup the dialogue queues
+        _sentencesQueueFirstMet = new Queue<string>();
+        _sentencesQueueMainMet = new Queue<string>();
+        _sentencesQueueInterceptMet = new Queue<string>();
+        _sentencesQueueCompletionMet = new Queue<string>();
+        
+        // Setup the answers queues
+        _answersQueueFirstMet = new Queue<string>();
+        _answersQueueMainMet = new Queue<string>();
+        _answersQueueInterceptMet = new Queue<string>();
+        _answersQueueCompletionMet = new Queue<string>();
 
         // Setup the button listeners
         btnLeft.onClick.AddListener(DisplayNextSentence);
@@ -61,85 +89,70 @@ public class DialogueManager : MonoBehaviour
         _currentPlace = place;
 
         // Array of sentences Strings from the SO_Character Object
-        _currentDialogue = _currentCharacter.characterPlaceSpecificDialogue[_currentPlace];
+        _currentMainDialogue = _currentCharacter.characterPlaceSpecificDialogue[_currentPlace];
+
 
         // Array of answers Strings from the SO_Character Object
-        _currentDialogueAnswers = _currentCharacter.characterPlaceSpecificDialogueAnswers[_currentPlace];
-
+        _currentMainDialogueAnswers = _currentCharacter.characterPlaceSpecificDialogueAnswers[_currentPlace];
         _currentDialogueIndex = 0;
         dialogueBox.SetActive(true);
 
         // Clear the sentences queue
-        _sentences.Clear();
+        _sentencesQueueMainMet.Clear();
 
         // Add the sentences to the queue
-        foreach (var sentence in _currentDialogue)
+        foreach (var sentence in _currentMainDialogue)
         {
-            _sentences.Enqueue(sentence);
+            _sentencesQueueMainMet.Enqueue(sentence);
         }
 
         // Add the answers to the buttons
-        foreach (var answer in _currentDialogueAnswers)
+        foreach (var answer in _currentMainDialogueAnswers)
         {
-            _answers.Enqueue(answer);
+            _answersQueueMainMet.Enqueue(answer);
         }
-
-        // Display the first sentence.
-        // This will also increment the current dialogue index
-        // Use Spacebar to continue the dialogue
+        
         DisplayNextSentence();
     }
 
     // Display the next sentence
     private void DisplayNextSentence()
     {
-        // TODO: Flag einbauen, der prüft, ob der Spieler schon gewünschte Item gefunden hat
-        
-        print("DisplayNextSentence() called ::: _sentences.Count = " + _sentences.Count +
-              " ::: _currentDialogueIndex = " + _currentDialogueIndex + " ::: _currentDialogue.Length = " +
-              _currentDialogue.Length);
-        // If there are no more sentences
-        if (_sentences.Count == 0)
-        {
-            // End the dialogue
-            EndDialogue();
-            return;
-        }
-
-        // Get the next sentence
-        _currentSentence = _sentences.Dequeue();
-        // Set the dialogue text
-        dialogueText.text = _currentSentence;
-
-        // Set button text
-        SetAnswerButtonsText(_currentDialogueIndex);
-
-        if (_currentDialogueIndex < _currentDialogueAnswers.Length)
-        {
-            // Increment the current dialogue index, so the next PAIR of answers will be displayed
-            _currentDialogueIndex += 2;
-        }
+        // Check Character Flags
+        if(_currentCharacter.firstMet) Dialogue(_sentencesQueueFirstMet, _answersQueueFirstMet);
+        else if(_currentCharacter.mainMet) Dialogue(_sentencesQueueMainMet, _answersQueueMainMet);
+        else if(_currentCharacter.interceptMet) Dialogue(_sentencesQueueInterceptMet, _answersQueueInterceptMet);
+        else if(_currentCharacter.completionMet) Dialogue(_sentencesQueueCompletionMet, _answersQueueCompletionMet);
     }
 
-    // End the dialogue
+    private void Dialogue(Queue<string> sentencesQueue, Queue<string> answersQueue)
+    {
+        if (_currentDialogueIndex < _currentMainDialogue.Length)
+        {
+            _currentSentence = sentencesQueue.Dequeue();
+            _currentAnswer = answersQueue.Dequeue();
+            dialogueText.text = _currentSentence;
+            
+            SetAnswerButtonsText(_currentDialogueIndex + 1, answersQueue.ToArray());
+            
+            _currentDialogueIndex++;
+        }
+        else EndDialogue();
+    }
+    
     private void EndDialogue()
     {
-        // Set the dialogue box inactive
         dialogueBox.SetActive(false);
         // Deactivate the current character's Image
         _currentCharacterAtPlace.DeactivateCharacter();
-        // If the current dialogue index is less than the current dialogue length
-        if (_currentDialogueIndex >= _currentDialogue.Length) return;
-
-        // Increment the current dialogue index
+        if (_currentDialogueIndex >= _currentMainDialogue.Length) return;
         _currentDialogueIndex = 0;
     }
 
     // Current Workaround for the DialogueManager
-    private void SetAnswerButtonsText(int currentIndex)
+    private void SetAnswerButtonsText(int currentIndex, string[] answers)
     {
-        // Set button text
-        btnLeft.GetComponentInChildren<TextMeshProUGUI>().text = _currentDialogueAnswers[currentIndex];
-        btnRight.GetComponentInChildren<TextMeshProUGUI>().text = _currentDialogueAnswers[currentIndex + 1];
+        btnLeft.GetComponentInChildren<TextMeshProUGUI>().text = answers[currentIndex];
+        btnRight.GetComponentInChildren<TextMeshProUGUI>().text = answers[currentIndex + 1];
     }
 }

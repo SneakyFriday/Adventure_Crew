@@ -40,8 +40,9 @@ public class PlaceManager : MonoBehaviour
     public void ChangePlace(string placeIndex)
     {
         // Set canvas groups to actual and target
-        actualCanvasGroup = 
-        
+        // actualCanvasGroup = targetCanvasGroup;
+        // targetCanvasGroup = actualCanvasGroup == actualCanvasGroup ? targetCanvasGroup : actualCanvasGroup;
+
         // Fade In fade Out
         canvasGroupAlphaFade.canvasGroupFadeOut = actualCanvasGroup;
         canvasGroupAlphaFade.canvasGroupFadeIn = targetCanvasGroup;

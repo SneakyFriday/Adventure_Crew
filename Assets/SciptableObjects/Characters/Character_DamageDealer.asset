@@ -24,11 +24,10 @@ MonoBehaviour:
   desiredObjects:
   - {fileID: 11400000, guid: 5b36b651bb852944e8ce239d81509c69, type: 2}
   _characterDialogue_Tavern:
-  - "<i><b>Als du die Taverne betrittst, steigt dir der Duft von leckerem Essen sowie
-    frischen Hopfen in die Nase. Ein freundliches Gesicht schmunzelt dir zu, w\xE4hrend
-    du weiter in den Raum gehst. Sie winkt dich zu sich her\xFCber.</i></b>\nHey,
-    du scheinst neu hier in der Stadt zu sein. Was treibt dich hier her? Hoffentlich
-    nicht der gute Wein, das ist uns leider ausgegangen."
+  - "Du gehst hin\xFCber und vor dir sitzt eine junge Frau, die offensichtlich kampferprobt
+    ist. Zumindest deutet ihre R\xFCstung und ihre Waffe darauf hin."
+  - Hey, du scheinst neu hier in der Stadt zu sein. Was treibt dich hier her? Hoffentlich
+    nicht der gute Wein, das ist uns leider ausgegangen.
   - "Zun\xE4chst dachten wir, Banditen h\xE4tten die w\xF6chentliche Lieferung abgefangen.
     Ihr m\xFCsst wissen, dass dies hier nicht selten vorkommt. Doch dann erfuhren
     wir, dass die Stra\xDFen nach Norden vor kurzem durch einen heftigen Erdrutscht
@@ -52,22 +51,24 @@ MonoBehaviour:
   - "Nun dann...es war sch\xF6n mit dir zu reden. Vielleicht sehen wir uns ja noch
     einmal wieder"
   _characterDialogue_Tavern_answers:
-  - Ich mag lieber Bier. Aber was geschah?
-  - Der gute Wein. Was ist passiert?
-  - Banditen...
-  - "Ein Ungl\xFCck?"
-  - Ok?
-  - Hm...
-  - Wo die Abenteuer sind, da bin auch ich.
-  - Ich bin ebenfalls auf der Suche nach Abenteuern
-  - "Ich suche noch Leute f\xFCr meine wackere Truppe"
-  - "Ich w\xFCrde der Sache gerne auf den Grund gehen, wie siehts aus?"
-  - Und?
-  - Was ist los?
-  - "Nat\xFCrlich, ich k\xFCmmere mich darum"
-  - "Ich werde sehen, was sich machen l\xE4sst..."
-  - Bis bald!
-  - Wir werden sehen...
+  - Auf sie zugehen
+  - Sie ansprechen
+  - '"Ich mag lieber Bier. Aber was geschah?"'
+  - '"Der gute Wein. Was ist passiert?"'
+  - '"Banditen..."'
+  - "\"Ein Ungl\xFCck?\""
+  - '"Ok?"'
+  - '"Hm..."'
+  - '"Wo die Abenteuer sind, da bin auch ich."'
+  - '"Ich bin ebenfalls auf der Suche nach Abenteuern"'
+  - "\"Ich suche noch Leute f\xFCr meine wackere Truppe\""
+  - "\"Ich w\xFCrde der Sache gerne auf den Grund gehen, wie siehts aus?\""
+  - '"Und?"'
+  - '"Was ist los?"'
+  - "\"Nat\xFCrlich, ich k\xFCmmere mich darum\""
+  - "\"Ich werde sehen, was sich machen l\xE4sst...\""
+  - '"Bis bald!"'
+  - '"Wir werden sehen..."'
   _characterDialogue_TownCenter:
   - Town Center Dialogue Line
   - Another Town Center Dialogue Line
@@ -100,3 +101,23 @@ MonoBehaviour:
   - 2
   - 3
   - 4
+  _characterDialogue_firstMet: Etwas versteckt im Hintergrund erblickst du einen
+    Menschen mit offensichtlicher Abenteurer-Kleidung
+  _characterDialogue_firstMet_answers:
+  - "Ein Getr\xE4nk bestellen"
+  - Person ansprechen
+  _characterDialogue_interceptMet: "\"Hey, sch\xF6n dich zu sehen. Hast du schon
+    gefunden, wonach ich dich gebeten hatte?\""
+  _characterDialogue_interceptMet_answers:
+  - Ja, hier ist es
+  - Ich suche noch...
+  _characterDialogue_completionMet: "\"Vielen Dank! Nun bin ich bestens ger\xFCstet.
+    Wir k\xF6nnen jederzeit los und diesem Scheusal ein Ende bereiten. Ich warte,
+    bis wir aufbrechen.\""
+  _characterDialogue_completionMet_answers:
+  - "Wir sehen uns sp\xE4ter!"
+  - Bereite dich gut vor...
+  firstMet: 0
+  mainMet: 0
+  interceptMet: 0
+  completionMet: 0

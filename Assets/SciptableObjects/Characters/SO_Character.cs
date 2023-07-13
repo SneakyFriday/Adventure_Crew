@@ -42,32 +42,33 @@ public class SO_Character : ScriptableObject
     public SO_Item[] desiredObjects;
     public Dictionary<PlaceIndexes, string[]> characterPlaceSpecificDialogue = new();
     public Dictionary<PlaceIndexes, string[]> characterPlaceSpecificDialogueAnswers = new();
+    
+    // TODO: Testing ... Question + Answers
+    public Dictionary<string, string[]> characterGenericDialogueAndAnswers = new();
 
     #endregion
 
     #region Variables: Place Specific Dialogue
     
     [Header("Place Specific Dialogues")]
-    [TextArea(5, 10)]
-    [SerializeField] private string[] _characterDialogue_Tavern;
-    [TextArea(1, 2)]
-    [SerializeField] private string[] _characterDialogue_Tavern_answers;
-    [TextArea(5, 10)]
-    [SerializeField] private string[] _characterDialogue_TownCenter;
-    [TextArea(1, 2)]
-    [SerializeField] private string[] _characterDialogue_TownCenter_answers;
-    [TextArea(5, 10)]
-    [SerializeField] private string[] _characterDialogue_Forest;
-    [TextArea(1, 2)]
-    [SerializeField] private string[] _characterDialogue_Forest_answers;
-    [TextArea(5, 10)]
-    [SerializeField] private string[] _characterDialogue_MagicShop;
-    [TextArea(1, 2)]
-    [SerializeField] private string[] _characterDialogue_MagicShop_answers;
-    [TextArea(5, 10)]
-    [SerializeField] private string[] _characterDialogue_Blacksmith;
-    [TextArea(1, 2)]
-    [SerializeField] private string[] _characterDialogue_Blacksmith_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Tavern;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Tavern_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_TownCenter;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_TownCenter_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Forest;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Forest_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_MagicShop;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_MagicShop_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Blacksmith;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Blacksmith_answers;
+    
+    [Header("Generic Dialogue for Testing Purposes")]
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_firstMet;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_firstMet_answers;
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_interceptMet;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_interceptMet_answers;
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_completionMet;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_completionMet_answers;
 
     [Header("Interaction Flags")] 
     public bool firstMet;
@@ -104,6 +105,11 @@ public class SO_Character : ScriptableObject
         characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.MagicShop, _characterDialogue_MagicShop_answers);
         characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Blacksmith, _characterDialogue_Blacksmith_answers);
         
+        // TODO: Testing, adjust this later.
+        characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
+        characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
+        characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
+
         // Initialize the Mood Sprite Dictionary
         // TODO: This is a bit of a hack, but it works for now.
         // TODO: Find a better way to do this.

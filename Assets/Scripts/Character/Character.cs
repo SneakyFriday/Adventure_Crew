@@ -40,6 +40,7 @@ public class Character : MonoBehaviour, ICharacter
      */
     private SO_Character CheckIfCharacterIsAtLocation()
     {
+        // Loops through the characterData array and checks if the current character is at the current location
         foreach (var character in characterData)
         {
             if (character.currentCharacterPlace != _placeManager.GetCurrentPlace()) continue;

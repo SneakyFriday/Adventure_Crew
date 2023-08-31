@@ -12,19 +12,20 @@ public class PlaceManager : MonoBehaviour
     
     [Tooltip("Add your Places for the game here.")]
     [SerializeField] private SO_Places[] places;
-    [Tooltip("Place Scene Background Object here")]
     [SerializeField] private Image sceneBackground;
-    [Tooltip("Place Name Object here")]
     [SerializeField] private TextMeshProUGUI placeName;
-    [Tooltip("CanvasGroup for Fade In Fade Out")]
     [SerializeField] private CanvasGroup actualCanvasGroup, targetCanvasGroup;
     [SerializeField] private CanvasGroupAlphaFade canvasGroupAlphaFade;
 
     private PlaceIndexes _currentPlace;
-    
     public UnityEvent onPlaceChanged;
 
     private void Awake()
+    {
+        SingletonSetup();
+    }
+
+    private void SingletonSetup()
     {
         if (Instance == null)
         {
@@ -36,30 +37,61 @@ public class PlaceManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     public void ChangePlace(string placeIndex)
     {
-        // Set canvas groups to actual and target
-        // actualCanvasGroup = targetCanvasGroup;
-        // targetCanvasGroup = actualCanvasGroup == actualCanvasGroup ? targetCanvasGroup : actualCanvasGroup;
+        SetupCanvasGroups();
+        FadeCanvasGroups();
 
-        // Fade In fade Out
+        foreach (var place in places)
+        {
+            if (!IsMatchingPlace(place, placeIndex)) continue;
+
+            SetCurrentPlace(place.placeIndex);
+            UpdateUI(place);
+            InvokePlaceChangedEvent();
+        }
+    }
+
+    private void SetupCanvasGroups()
+    {
         canvasGroupAlphaFade.canvasGroupFadeOut = actualCanvasGroup;
         canvasGroupAlphaFade.canvasGroupFadeIn = targetCanvasGroup;
         canvasGroupAlphaFade.lerpTime = 1f;
-        canvasGroupAlphaFade.FadeCanvasGroup();
-        
-        foreach (var place in places)
-        {
-            if (place.placeIndex != (PlaceIndexes)Enum.Parse(typeof(PlaceIndexes), placeIndex)) continue;
-            
-            _currentPlace = place.placeIndex;
-            sceneBackground.sprite = place.backgroundSprite;
-            placeName.text = place.placeIndex.ToString();
-            onPlaceChanged.Invoke();
-        }
     }
-    
+
+    private void FadeCanvasGroups()
+    {
+        canvasGroupAlphaFade.FadeCanvasGroup();
+        SwapCanvasGroups();
+    }
+
+    private bool IsMatchingPlace(SO_Places place, string placeIndex)
+    {
+        return place.placeIndex == (PlaceIndexes)Enum.Parse(typeof(PlaceIndexes), placeIndex);
+    }
+
+    private void SetCurrentPlace(PlaceIndexes placeIndex)
+    {
+        _currentPlace = placeIndex;
+    }
+
+    private void UpdateUI(SO_Places place)
+    {
+        sceneBackground.sprite = place.backgroundSprite;
+        placeName.text = place.placeIndex.ToString();
+    }
+
+    private void InvokePlaceChangedEvent()
+    {
+        onPlaceChanged.Invoke();
+    }
+
+    private void SwapCanvasGroups()
+    {
+        (actualCanvasGroup, targetCanvasGroup) = (targetCanvasGroup, actualCanvasGroup);
+    }
+
     public PlaceIndexes GetCurrentPlace()
     {
         return _currentPlace;

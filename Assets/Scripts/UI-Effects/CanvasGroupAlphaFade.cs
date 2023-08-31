@@ -1,64 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CanvasGroupAlphaFade : MonoBehaviour
 {
     public CanvasGroup canvasGroupFadeOut, canvasGroupFadeIn;
-    public float startAlpha;
-    public float endAlpha;
     public float lerpTime = 1f;
     
     public void FadeCanvasGroup()
     {
-        //StartCoroutine(FadeCanvasGroupCoroutine());
         StartCoroutine(FadeRoutine(canvasGroupFadeOut, canvasGroupFadeIn));
     }
-    
-    // private IEnumerator FadeCanvasGroupCoroutine()
-    // {
-    //     var timeStartedLerping = Time.time;
-    //     var timeSinceStarted = Time.time - timeStartedLerping;
-    //     var percentageComplete = timeSinceStarted / lerpTime;
-    //     
-    //     while (true)
-    //     {
-    //         timeSinceStarted = Time.time - timeStartedLerping;
-    //         percentageComplete = timeSinceStarted / lerpTime;
-    //         
-    //         var currentValue = Mathf.Lerp(startAlpha, endAlpha, percentageComplete);
-    //         canvasGroup.alpha = currentValue;
-    //         
-    //         if (percentageComplete >= 1) break;
-    //         
-    //         yield return new WaitForEndOfFrame();
-    //     }
-    // }
-    
+
     private IEnumerator FadeRoutine(CanvasGroup fadeOutCanvas, CanvasGroup fadeInCanvas)
     {
-        StartCoroutine(FadeMenuRoutine(fadeOutCanvas));
-        yield return new WaitForSeconds(lerpTime);
-        StartCoroutine(FadeMenuRoutine(fadeInCanvas));
+        yield return FadeMenuRoutine(fadeOutCanvas, false);
+        yield return FadeMenuRoutine(fadeInCanvas, true);
     }
-    
-    private IEnumerator FadeMenuRoutine(CanvasGroup canvasGroupToFade)
+
+    private IEnumerator FadeMenuRoutine(CanvasGroup canvasGroupToFade, bool fadeIn)
     {
-        var fadeStart = canvasGroupToFade.alpha;
-        var fadeTarget = canvasGroupToFade.alpha == 0 ? 1 : 0;
-        var boolTarget = !canvasGroupToFade.interactable;
+        float startAlpha = canvasGroupToFade.alpha;
+        float targetAlpha = fadeIn ? 1f : 0f;
 
-        canvasGroupToFade.interactable = boolTarget;
-        canvasGroupToFade.blocksRaycasts = boolTarget;
+        canvasGroupToFade.interactable = fadeIn;
+        canvasGroupToFade.blocksRaycasts = fadeIn;
 
-        var startTime = Time.time;
+        float startTime = Time.time;
+        float elapsedTime = 0f;
 
-        while (Time.time <= startTime + lerpTime)
+        while (elapsedTime < lerpTime)
         {
             yield return null;
-            var t = (Time.time - startTime) / lerpTime;
-            var alphaValue = Mathf.SmoothStep(fadeStart, fadeTarget, t);
+
+            elapsedTime = Time.time - startTime;
+            float t = Mathf.Clamp01(elapsedTime / lerpTime);
+
+            float alphaValue = Mathf.SmoothStep(startAlpha, targetAlpha, t);
             canvasGroupToFade.alpha = alphaValue;
         }
+
+        canvasGroupToFade.alpha = targetAlpha;
     }
 }

@@ -149,7 +149,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         // Deactivate the current character's Image
-        _currentCharacterAtPlace.DeactivateCharacter();
+        _currentCharacterAtPlace.DeactivateCharacterUI();
         if (_currentDialogueIndex >= _currentMainDialogue.Length) return;
         _currentDialogueIndex = 0;
     }

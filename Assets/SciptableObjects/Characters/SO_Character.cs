@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Story Character", menuName = "Character")]
 public class SO_Character : ScriptableObject
 {
+    private class DialogueData
+    {
+        public string[] Dialogue;
+        public string[] Answers;
+    }
+    
     public enum CharacterClass
     {
         Paladin,
@@ -83,16 +89,20 @@ public class SO_Character : ScriptableObject
      */
     public void Init()
     {
-        // Reset Values
         characterAttentionValue = 0;
-        
-        // Set first Interaction Flag
         firstMet = true;
 
-        // TODO: Use a loop to do this instead of hardcoding it.
-        // TODO: Use tuples.
-        // Attach Dialogue to Places in Dictionary
-        characterPlaceSpecificDialogue.Add(PlaceIndexes.Tavern, _characterDialogue_Tavern);
+        characterPlaceSpecificDialogue.Clear();
+        characterPlaceSpecificDialogueAnswers.Clear();
+        characterGenericDialogueAndAnswers.Clear();
+    
+        foreach (PlaceIndexes place in Enum.GetValues(typeof(PlaceIndexes)))
+        {
+            characterPlaceSpecificDialogue.Add(place, GetDialogueForPlace(place));
+            characterPlaceSpecificDialogueAnswers.Add(place, GetAnswersForPlace(place));
+        }
+        
+        /*characterPlaceSpecificDialogue.Add(PlaceIndexes.Tavern, _characterDialogue_Tavern);
         characterPlaceSpecificDialogue.Add(PlaceIndexes.TownCenter, _characterDialogue_TownCenter);
         characterPlaceSpecificDialogue.Add(PlaceIndexes.Forest, _characterDialogue_Forest);
         characterPlaceSpecificDialogue.Add(PlaceIndexes.MagicShop, _characterDialogue_MagicShop);
@@ -103,24 +113,47 @@ public class SO_Character : ScriptableObject
         characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.TownCenter, _characterDialogue_TownCenter_answers);
         characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Forest, _characterDialogue_Forest_answers);
         characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.MagicShop, _characterDialogue_MagicShop_answers);
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Blacksmith, _characterDialogue_Blacksmith_answers);
+        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Blacksmith, _characterDialogue_Blacksmith_answers);*/
         
         // TODO: Testing, adjust this later.
         characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
         characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
         characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
 
-        // Initialize the Mood Sprite Dictionary
-        // TODO: This is a bit of a hack, but it works for now.
-        // TODO: Find a better way to do this.
-        characterMoodSprite.Add(CharacterMoods.Happy, characterMoodSprites[0]);
-        characterMoodSprite.Add(CharacterMoods.Sad, characterMoodSprites[1]);
-        characterMoodSprite.Add(CharacterMoods.Angry, characterMoodSprites[2]);
+        InitializeMoodSprites();
     }
 
-    public string[] GetCharacterDialogue(PlaceIndexes place)
+    private void InitializeMoodSprites()
     {
-        return characterPlaceSpecificDialogue[place];
+        characterMoodSprite.Clear();
+        foreach (CharacterMoods mood in Enum.GetValues(typeof(CharacterMoods)))
+        {
+            characterMoodSprite.Add(mood, characterMoodSprites[(int)mood]);
+        }
+    }
+
+    private string[] GetAnswersForPlace(object place)
+    {
+        var placeIndex = (PlaceIndexes)place;
+        return placeIndex switch
+        {
+            PlaceIndexes.Tavern => _characterDialogue_Tavern_answers,
+            PlaceIndexes.MagicShop => _characterDialogue_MagicShop_answers,
+            PlaceIndexes.Forest => _characterDialogue_Forest_answers,
+            _ => null
+        };
+    }
+
+    private string[] GetDialogueForPlace(object place)
+    {
+        var placeIndex = (PlaceIndexes)place;
+        return placeIndex switch
+        {
+            PlaceIndexes.Tavern => _characterDialogue_Tavern,
+            PlaceIndexes.MagicShop => _characterDialogue_MagicShop,
+            PlaceIndexes.Forest => _characterDialogue_Forest,
+            _ => null
+        };
     }
 }
 

@@ -1,5 +1,3 @@
-
-using UnityEditor;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -10,7 +8,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-       var g = 1;
        var childCount = inventoryContainer.transform.childCount;
        _inventoryItemSlots = new InventorySlotController[childCount];
        for(var i = 0; i < childCount; i++)

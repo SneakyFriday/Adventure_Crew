@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5192,8 +5192,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroupFadeOut: {fileID: 0}
   canvasGroupFadeIn: {fileID: 0}
-  startAlpha: 0
-  endAlpha: 0
   lerpTime: 1
 --- !u!4 &770328794
 Transform:
@@ -9404,8 +9402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroupFadeOut: {fileID: 0}
   canvasGroupFadeIn: {fileID: 0}
-  startAlpha: 0
-  endAlpha: 0
   lerpTime: 1
 --- !u!114 &1407775741
 MonoBehaviour:
@@ -13336,7 +13332,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0

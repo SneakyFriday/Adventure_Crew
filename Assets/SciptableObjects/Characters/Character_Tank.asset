@@ -24,7 +24,31 @@ MonoBehaviour:
   desiredObjects:
   - {fileID: 11400000, guid: cc4a97f31acc7bd4a99cea415f60fe7b, type: 2}
   _characterDialogue_Tavern: []
+  _characterDialogue_Tavern_answers: []
   _characterDialogue_TownCenter: []
+  _characterDialogue_TownCenter_answers: []
   _characterDialogue_Forest: []
+  _characterDialogue_Forest_answers: []
   _characterDialogue_MagicShop: []
-  _characterDialogue_Blacksmith: []
+  _characterDialogue_MagicShop_answers: []
+  _characterDialogue_Blacksmith:
+  - Hallo
+  _characterDialogue_Blacksmith_answers:
+  - Hi
+  - Wie gehts?
+  _characterDialogue_firstMet: Halt! Wer da?
+  _characterDialogue_firstMet_answers:
+  - Ein Freund...
+  - Zeigt mir eure Waren.
+  _characterDialogue_interceptMet: Habt ihr das, worum ich euch gebeten habe?
+  _characterDialogue_interceptMet_answers:
+  - Hier...
+  - Ich suche noch...
+  _characterDialogue_completionMet: Danke, ich werde am Stadttor auf euch warten!
+  _characterDialogue_completionMet_answers:
+  - Bis dahin...
+  - Wir sehen uns dort...
+  firstMet: 1
+  mainMet: 0
+  interceptMet: 0
+  completionMet: 0

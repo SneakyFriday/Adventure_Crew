@@ -5,6 +5,7 @@ using System;
     Tavern,
     MagicShop,
     Forest,
+    Blacksmith,
     DragonLair,
     None
 }

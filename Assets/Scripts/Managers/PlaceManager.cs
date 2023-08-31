@@ -68,6 +68,7 @@ public class PlaceManager : MonoBehaviour
 
     private bool IsMatchingPlace(SO_Places place, string placeIndex)
     {
+        if(place == null) return false;
         return place.placeIndex == (PlaceIndexes)Enum.Parse(typeof(PlaceIndexes), placeIndex);
     }
 

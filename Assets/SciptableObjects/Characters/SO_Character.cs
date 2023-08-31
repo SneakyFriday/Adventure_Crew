@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Story Character", menuName = "Character")]
@@ -69,11 +70,11 @@ public class SO_Character : ScriptableObject
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Blacksmith_answers;
     
     [Header("Generic Dialogue for Testing Purposes")]
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_firstMet;
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_firstMet = "";
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_firstMet_answers;
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_interceptMet;
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_interceptMet = "";
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_interceptMet_answers;
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_completionMet;
+    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_completionMet = "";
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_completionMet_answers;
 
     [Header("Interaction Flags")] 
@@ -95,30 +96,28 @@ public class SO_Character : ScriptableObject
         characterPlaceSpecificDialogue.Clear();
         characterPlaceSpecificDialogueAnswers.Clear();
         characterGenericDialogueAndAnswers.Clear();
-    
+
         foreach (PlaceIndexes place in Enum.GetValues(typeof(PlaceIndexes)))
         {
-            characterPlaceSpecificDialogue.Add(place, GetDialogueForPlace(place));
-            characterPlaceSpecificDialogueAnswers.Add(place, GetAnswersForPlace(place));
+            var dialogueForPlace = GetDialogueForPlace(place);
+            var answersForPlace = GetAnswersForPlace(place);
+
+            if (dialogueForPlace is { Length: > 0 })
+            {
+                characterPlaceSpecificDialogue.Add(place, dialogueForPlace);
+            }
+
+            if (answersForPlace is { Length: > 0 })
+            {
+                characterPlaceSpecificDialogueAnswers.Add(place, answersForPlace);
+            }
+            Debug.Log("Character Initialized! " + characterName + " " + characterClass + " " + characterAttentionValue);
         }
         
-        /*characterPlaceSpecificDialogue.Add(PlaceIndexes.Tavern, _characterDialogue_Tavern);
-        characterPlaceSpecificDialogue.Add(PlaceIndexes.TownCenter, _characterDialogue_TownCenter);
-        characterPlaceSpecificDialogue.Add(PlaceIndexes.Forest, _characterDialogue_Forest);
-        characterPlaceSpecificDialogue.Add(PlaceIndexes.MagicShop, _characterDialogue_MagicShop);
-        characterPlaceSpecificDialogue.Add(PlaceIndexes.Blacksmith, _characterDialogue_Blacksmith);
-        
-        // Attach Dialogue Answers to Places in Dictionary
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Tavern, _characterDialogue_Tavern_answers);
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.TownCenter, _characterDialogue_TownCenter_answers);
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Forest, _characterDialogue_Forest_answers);
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.MagicShop, _characterDialogue_MagicShop_answers);
-        characterPlaceSpecificDialogueAnswers.Add(PlaceIndexes.Blacksmith, _characterDialogue_Blacksmith_answers);*/
-        
         // TODO: Testing, adjust this later.
-        characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
-        characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
-        characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
+        if(_characterDialogue_firstMet != null) characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
+        if(_characterDialogue_interceptMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
+        if(_characterDialogue_completionMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
 
         InitializeMoodSprites();
     }
@@ -139,6 +138,7 @@ public class SO_Character : ScriptableObject
         {
             PlaceIndexes.Tavern => _characterDialogue_Tavern_answers,
             PlaceIndexes.MagicShop => _characterDialogue_MagicShop_answers,
+            PlaceIndexes.Blacksmith => _characterDialogue_Blacksmith_answers,
             PlaceIndexes.Forest => _characterDialogue_Forest_answers,
             _ => null
         };
@@ -151,6 +151,7 @@ public class SO_Character : ScriptableObject
         {
             PlaceIndexes.Tavern => _characterDialogue_Tavern,
             PlaceIndexes.MagicShop => _characterDialogue_MagicShop,
+            PlaceIndexes.Blacksmith => _characterDialogue_Blacksmith,
             PlaceIndexes.Forest => _characterDialogue_Forest,
             _ => null
         };

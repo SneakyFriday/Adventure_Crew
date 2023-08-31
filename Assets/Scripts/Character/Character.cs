@@ -39,6 +39,30 @@ public class Character : MonoBehaviour, ICharacter
         }
     }
 
+    private void InitCharacter()
+    {
+        SO_Character newCharacter = CheckIfCharacterIsAtLocation();
+
+        if (newCharacter == _currentCharacterData)
+        {
+            return; // Character didn't change, no need to reinitialize
+        }
+
+        _currentCharacterData = newCharacter;
+
+        if (_currentCharacterData == null)
+        {
+            DeactivateCharacterUI();
+            return;
+        }
+
+        ActivateCharacterUI();
+        SetCharacterProperties();
+        SetCharacterMoodSprite();
+
+        onCharacterDialogue?.Invoke(_currentCharacterData, _placeManager.GetCurrentPlace());
+    }
+    
     private SO_Character CheckIfCharacterIsAtLocation()
     {
         foreach (var character in characterData)
@@ -53,29 +77,12 @@ public class Character : MonoBehaviour, ICharacter
         return null;
     }
 
-    private void InitCharacter()
-    {
-        _currentCharacterData = CheckIfCharacterIsAtLocation();
-
-        if (_currentCharacterData == null)
-        {
-            DeactivateCharacterUI();
-            return;
-        }
-
-        ActivateCharacterUI();
-        SetCharacterProperties();
-        SetCharacterMoodSprite();
-
-        onCharacterDialogue?.Invoke(_currentCharacterData, _placeManager.GetCurrentPlace());
-    }
-
     private void ActivateCharacterUI()
     {
         characterImage.gameObject.SetActive(true);
         characterMoodImage.gameObject.SetActive(true);
     }
-    
+
     public void DeactivateCharacterUI()
     {
         characterImage.gameObject.SetActive(false);
@@ -94,7 +101,7 @@ public class Character : MonoBehaviour, ICharacter
 
     private void SetCharacterMoodSprite()
     {
-        characterMoodImage.sprite = _currentCharacterData.characterMoodSprite[0];
+        characterMoodImage.sprite = _currentCharacterData.characterMoodSprite[SO_Character.CharacterMoods.Happy];
     }
 
     public void ChangeAttentionValue(int value)

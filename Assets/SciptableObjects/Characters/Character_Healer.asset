@@ -24,7 +24,31 @@ MonoBehaviour:
   desiredObjects:
   - {fileID: 11400000, guid: d21e44e2f153790498601d58c223819e, type: 2}
   _characterDialogue_Tavern: []
+  _characterDialogue_Tavern_answers: []
   _characterDialogue_TownCenter: []
+  _characterDialogue_TownCenter_answers: []
   _characterDialogue_Forest: []
-  _characterDialogue_MagicShop: []
+  _characterDialogue_Forest_answers: []
+  _characterDialogue_MagicShop:
+  - Hi
+  _characterDialogue_MagicShop_answers:
+  - "Na\t"
+  - Na
   _characterDialogue_Blacksmith: []
+  _characterDialogue_Blacksmith_answers: []
+  _characterDialogue_firstMet: Ahoi
+  _characterDialogue_firstMet_answers:
+  - hi
+  - hi
+  _characterDialogue_interceptMet: Interectp
+  _characterDialogue_interceptMet_answers:
+  - Weiter
+  - Weiter
+  _characterDialogue_completionMet: Complete
+  _characterDialogue_completionMet_answers:
+  - weiter
+  - weiter
+  firstMet: 1
+  mainMet: 0
+  interceptMet: 0
+  completionMet: 0

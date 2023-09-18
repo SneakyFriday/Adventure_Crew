@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Story Place", menuName = "Place")]
 public class SO_Places : ScriptableObject
 {
-    public Sprite backgroundSprite;
-    public Sprite characterSprite;
-    public PlaceIndexes placeIndex;
+    [SerializeField] public Sprite backgroundSprite;
+    [SerializeField] public Sprite characterSprite;
+    [SerializeField] public PlaceIndexes placeIndex;
     [Header("Optional")]
-    public string placeDescription;
+    [SerializeField] public string placeDescription;
 }

@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image _loadingBar;
     [SerializeField] private Scene  _currentScene;
     private float _progress;
+    private bool isSkipping = false;
+    private float skipTimer = 0f;
+    public float skipDuration = 2f;
     
     public static LevelManager Instance;
 
@@ -46,7 +49,6 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync((int) SceneIndexes.STARTSCREEN);
         SceneManager.LoadSceneAsync((int)SceneIndexes.GAMESCREEN, LoadSceneMode.Additive);
-        
     }
     
     public async void LoadScene(string sceneName)
@@ -62,6 +64,7 @@ public class LevelManager : MonoBehaviour
 
         do
         {
+            // Warte 1 Sekunde, damit man den Ladefortschritt besser sehen kann
             await Task.Delay(1000);
             _progress = scene.progress;
         }
@@ -73,6 +76,26 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex == (int) SceneIndexes.INTROSCREEN)
+        {
+            isSkipping = true;
+        }
+        
+        if (isSkipping)
+        {
+            skipTimer += Time.deltaTime;
+            
+            if (skipTimer >= skipDuration)
+            {
+                LoadScene(SceneIndexes.GAMESCREEN.ToString());
+                Debug.Log("Cutscene übersprungen");
+                isSkipping = false;
+            }
+        }
+        else
+        {
+            skipTimer = 0f;
+        }
         // Ladebalken kontinuierlich füllen. Sieht cooler aus.
         _loadingBar.fillAmount = Mathf.MoveTowards(_loadingBar.fillAmount, _progress, Time.deltaTime * 3);
     }

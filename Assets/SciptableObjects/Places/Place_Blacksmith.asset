@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d7cdef4dd2223e4cba8df4c71524676, type: 3}
   m_Name: Place_Blacksmith
   m_EditorClassIdentifier: 
-  backgroundSprite: {fileID: 0}
+  backgroundSprite: {fileID: 21300000, guid: 4bc4c4242ab58be429f7d9b0fdd81bbd, type: 3}
   characterSprite: {fileID: 0}
   placeIndex: 3
   placeDescription: 

@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
+  m_Name: Character_DamageDealer_Tavern
+  m_EditorClassIdentifier: 
+  characterSprite: {fileID: 21300000, guid: 42fa740a779cc2147bf62d17ea5811a7, type: 3}
+  characterMoodSprites:
+  - {fileID: -1414324355, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
+  - {fileID: 1130471917, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
+  - {fileID: -373895228, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
+  characterName: Yasmina
+  characterAttentionValue: 100
+  characterClass: 3
+  currentCharacterPlace: 0
+  desiredObjects:
+  - {fileID: 11400000, guid: 5b36b651bb852944e8ce239d81509c69, type: 2}
+  _characterDialogue_Tavern:
+  - "Als du wieder in die Taverne kommst, siehst du wie ein breitschultriger Mann
+    zur Seite geht und den Blick auf die Frau von vorhin frei macht. Du gehst hin\xFCber
+    und vor dir sitzt eine junge Frau, die offensichtlich kampferprobt ist. Sie mustert
+    dich l\xE4chelnd."
+  - '"Du scheinst wirklich neu hier in der Stadt zu sein. Was treibt dich hier her?
+    Hoffentlich nicht der gute Wein, das ist uns leider ausgegangen."'
+  - "\"Zun\xE4chst dachten wir, Banditen h\xE4tten die w\xF6chentliche Lieferung
+    abgefangen. Ihr m\xFCsst wissen, dass dies hier nicht selten vorkommt. Doch dann
+    erfuhren wir, dass die Stra\xDFen nach Norden vor kurzem durch einen heftigen
+    Erdrutscht unpassierbar gemacht wurden.\""
+  - "\"Die einen erz\xE4hlen, dass es ein Erdbeben war. Die anderen erz\xE4hlen von
+    einem dumpfen markersch\xFCtternden Br\xFCllen, dass die Erde zum Ersch\xFCttern
+    gebracht hat.\"\n\nSie scheint zun\xE4chst besorgt, aber dann siehst du ihre
+    Augen aufleuchten und wie sie ihre Faust mit einem Anflug eines L\xE4cheln zu
+    ballen beginnt."
+  - "\"Beides eher unheimliche Vorzeichen... und Vorzeichen f\xFCr ein gro\xDFen
+    Abenteuer. Ihr seht es doch auch so oder?\""
+  - "\"Ein Abenteurer, mh? Nun dann kannst du dich hier wohl in bester Gesellschaft
+    wiegen. Es gibt hier viele, die gerne mal losziehen w\xFCrden. Den meisten fehlt
+    jedoch eine gute Gruppe...\""
+  - "\"Du suchst Leute f\xFCr eine abenteuerliche Reise? Nun, wie gesagt... einige
+    w\xFCrden gerne losziehen. Auch ich...\"\n\nSie schmunzelt etwas, wird dann aber
+    nachdenklich"
+  - "\"Mir fehlen jedoch einige Pfeile. Ohne sie bin ich im Kampf nicht hilfreich.
+    K\xF6nntest du mir ein paar besorgen? Ich h\xF6rte, dass im Waldlager welche
+    zu finden seien.\""
+  - "\"Nun dann...es war sch\xF6n mit dir zu reden. Vielleicht sehen wir uns ja noch
+    einmal wieder.\""
+  _characterDialogue_Tavern_answers:
+  - Nicken
+  - Sie ansprechen
+  - '"Ich mag lieber Bier. Aber was geschah?"'
+  - '"Der gute Wein. Was ist passiert?"'
+  - '"Banditen..."'
+  - "\"Ein Ungl\xFCck?\""
+  - '"Ok?"'
+  - '"Hm..."'
+  - '"Wo die Abenteuer sind, da bin auch ich."'
+  - '"Ich bin ebenfalls auf der Suche nach Abenteuern"'
+  - "\"Ich suche noch Leute f\xFCr meine wackere Truppe\""
+  - "\"Ich w\xFCrde der Sache gerne auf den Grund gehen, wie siehts aus?\""
+  - '"Und?"'
+  - '"Was ist los?"'
+  - "\"Nat\xFCrlich, ich k\xFCmmere mich darum\""
+  - "\"Ich werde sehen, was sich machen l\xE4sst...\""
+  - '"Bis bald!"'
+  - '"Wir werden sehen..."'
+  _characterDialogue_Forest:
+  - Forest Dialogue Line
+  - Another Forest Dialogue Line
+  _characterDialogue_Forest_answers:
+  - text4
+  - text4
+  - text4
+  - text4
+  _characterDialogue_MagicShop:
+  - Magic Shop Dialogue Line
+  - Another Magic Shop Dialogue Line
+  _characterDialogue_MagicShop_answers:
+  - 1
+  - 2
+  - 3
+  - 4
+  _characterDialogue_Blacksmith:
+  - Blacksmith Dialogue Line
+  - Another Blacksmith Dialogue Line
+  _characterDialogue_Blacksmith_answers:
+  - 1
+  - 2
+  - 3
+  - 4
+  _characterDialogue_DragonHort: []
+  _characterDialogue_DragonHort_answers: []
+  _characterDialogue_firstMet:
+  - "<b>Eine junge Frau, offensichtlich eine Art J\xE4gerin mustert dich aus der
+    Ecke der Taverne und winkt dich zu sich...</b>"
+  - "\"Ein Wanderer? Ihr seht so aus, als h\xE4ttet ihr viele Geschichten auf Lager.
+    Ich w\xFCrde gerne ein paar davon h\xF6ren....\""
+  - "\"Seid ihr eine Weile in der Stadt? Ich habe hier noch ein paar wichtige Gespr\xE4che
+    zu f\xFChren, aber gesellt euch doch gerne sp\xE4ter zu mir, dann reden wir...\""
+  _characterDialogue_firstMet_answers:
+  - Entschlossen zu ihr gehen
+  - Umsehen und sie ansprechen
+  - '"Nun, das ein oder andere habe ich schon erlebt."'
+  - "\"K\xF6nnte sein...\""
+  - '"Gerne, ich schaue mich noch etwas um."'
+  - '"Wir werden sehen..."'
+  _characterDialogue_interceptMet:
+  - '"Ah, ihr seids. Habt ihr die Pfeile, um die ich euch gegeben habe?"'
+  _characterDialogue_interceptMet_answers:
+  - '"Ja, hier sind sie..."'
+  - '"Ich suche noch..."'
+  _characterDialogue_completionMet:
+  - "\"Danke, damit kann ich arbeiten. Ich bereite meine Sachen vor und wir treffen
+    uns sp\xE4ter am Stadteingang, okay?\""
+  _characterDialogue_completionMet_answers:
+  - "Wir sehen uns sp\xE4ter!"
+  - Bereite dich gut vor...
+  firstMet: 0
+  mainMet: 0
+  interceptMet: 0
+  completionMet: 1

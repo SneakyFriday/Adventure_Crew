@@ -30,19 +30,15 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        // Get the audio mixer groups
         bgmMixerGroup = mixer.FindMatchingGroups("Master")[1];
         sfxMixerGroup = mixer.FindMatchingGroups("Master")[2];
-
-        // Load the saved volume settings from PlayerPrefs or a config file
+        
         bgmVolume = PlayerPrefs.GetFloat("bgmVolume", bgmVolume);
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume", sfxVolume);
-
-        // Set the initial volumes for the audio mixer groups
+        
         mixer.SetFloat("bgmVolume", Mathf.Log10(bgmVolume) * 20);
         mixer.SetFloat("sfxVolume", Mathf.Log10(sfxVolume) * 20);
-
-        // Set the initial volumes for the audio sources
+        
         bgmSource.volume = bgmVolume;
         sfxSource.volume = sfxVolume;
     }

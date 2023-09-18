@@ -19,15 +19,11 @@ public class Character : MonoBehaviour, ICharacter
     private SO_Character.CharacterClass _characterClass;
     private SO_Item[] _desiredObjects;
 
-    public event Action<SO_Character, PlaceIndexes> onCharacterDialogue;
+    public event Action<SO_Character, PlaceIndexes> onCharacterDialogue = delegate { };
 
     private void Awake()
     {
         _placeManager.onPlaceChanged.AddListener(InitCharacter);
-    }
-
-    private void Start()
-    {
         InitAllCharacters();
     }
 
@@ -42,12 +38,11 @@ public class Character : MonoBehaviour, ICharacter
     private void InitCharacter()
     {
         SO_Character newCharacter = CheckIfCharacterIsAtLocation();
+        
+        Debug.Log("Character at Place? " + (newCharacter == _currentCharacterData));
 
-        if (newCharacter == _currentCharacterData)
-        {
-            return; // Character didn't change, no need to reinitialize
-        }
-
+        if (newCharacter == _currentCharacterData) return;
+        
         _currentCharacterData = newCharacter;
 
         if (_currentCharacterData == null)
@@ -58,9 +53,9 @@ public class Character : MonoBehaviour, ICharacter
 
         ActivateCharacterUI();
         SetCharacterProperties();
-        SetCharacterMoodSprite();
+        //SetCharacterMoodSprite();
 
-        onCharacterDialogue?.Invoke(_currentCharacterData, _placeManager.GetCurrentPlace());
+        onCharacterDialogue.Invoke(_currentCharacterData, _placeManager.GetCurrentPlace());
     }
     
     private SO_Character CheckIfCharacterIsAtLocation()
@@ -73,20 +68,19 @@ public class Character : MonoBehaviour, ICharacter
             }
         }
 
-        Debug.Log("No Character at this location! " + _placeManager.GetCurrentPlace());
         return null;
     }
 
-    private void ActivateCharacterUI()
+    public void ActivateCharacterUI()
     {
         characterImage.gameObject.SetActive(true);
-        characterMoodImage.gameObject.SetActive(true);
+        //characterMoodImage.gameObject.SetActive(true);
     }
 
     public void DeactivateCharacterUI()
     {
         characterImage.gameObject.SetActive(false);
-        characterMoodImage.gameObject.SetActive(false);
+        //characterMoodImage.gameObject.SetActive(false);
     }
 
     private void SetCharacterProperties()
@@ -96,6 +90,7 @@ public class Character : MonoBehaviour, ICharacter
         _characterAttentionValue = _currentCharacterData.characterAttentionValue;
         _characterClass = _currentCharacterData.characterClass;
         _desiredObjects = _currentCharacterData.desiredObjects;
+        if(_characterAttentionValue >= 100) _characterAttentionValue = 100;
         characterAttentionBarFill.fillAmount = _characterAttentionValue / 100f;
     }
 
@@ -110,12 +105,17 @@ public class Character : MonoBehaviour, ICharacter
         _characterAttentionValue = _currentCharacterData.characterAttentionValue;
         characterAttentionBarFill.fillAmount = _characterAttentionValue / 100f;
     }
+    
+    public int GetCharacterAttentionValue()
+    {
+        return _characterAttentionValue;
+    }
 
     public SO_Item[] GetDesiredObjects()
     {
         return _desiredObjects;
     }
-
+    
     public SO_Character.CharacterClass GetCharacterClass()
     {
         return _characterClass;

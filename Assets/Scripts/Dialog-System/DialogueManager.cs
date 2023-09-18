@@ -1,59 +1,36 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    // DialogueManager is a singleton
-    public static DialogueManager Instance;
+    public static DialogueManager Instance { get; private set; }
 
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button btnLeft;
     [SerializeField] private Button btnRight;
-
-    // // Setup the Character Dialogue Queues
-    // private Queue<string> _sentencesQueueFirstMet;
-    // private Queue<string> _sentencesQueueMainMet;
-    // private Queue<string> _sentencesQueueInterceptMet;
-    // private Queue<string> _sentencesQueueCompletionMet;
-    //
-    // // Setup the Player/Button Answers Queues
-    // private Queue<string> _answersQueueFirstMet;
-    // private Queue<string> _answersQueueMainMet;
-    // private Queue<string> _answersQueueInterceptMet;
-    // private Queue<string> _answersQueueCompletionMet;
-
-    private SentenceAnswer _sentenceFirstMet;
-    private SentenceAnswer _sentenceMainMet;
-    private SentenceAnswer _sentenceInterceptMet;
-    private SentenceAnswer _sentenceCompletionMet;
+    [SerializeField] private Character _currentCharacterAtPlace;
+    [SerializeField] private SingleCanvasController _magicShopPotionCanvas;
     
-    // Sentences and Answers Properties
+    // TODO: Auslagern
+    [SerializeField] private ForestShop _forestShop;
+
+    private Queue<string> sentencesQueue = new Queue<string>();
+    private Queue<string> answersQueue = new Queue<string>();
     private string _currentSentence;
-    private string _currentAnswer;
-    private string[] _currentFirstDialogue;
-    private string[] _currentFirstDialogueAnswers;
-    private string[] _currentMainDialogue;
-    private string[] _currentMainDialogueAnswers;
-    private string[] _currentInterceptDialogue;
-    private string[] _currentInterceptDialogueAnswers;
-    private string[] _currentCompletionDialogue;
-    private string[] _currentCompletionDialogueAnswers;
     private int _currentDialogueIndex;
-    
-    // Character and Place Properties
+
     private SO_Character _currentCharacter;
     private PlaceIndexes _currentPlace;
-    private Character _currentCharacterAtPlace;
+    //private Character _currentCharacterAtPlace;
 
     private void Awake()
     {
+        _currentCharacterAtPlace.onCharacterDialogue += InitDialogue;
+        
         if (Instance == null)
         {
             Instance = this;
@@ -67,97 +44,200 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        // Setup the character and dialogue event listeners
-        _currentCharacterAtPlace = FindObjectOfType<Character>();
-        _currentCharacterAtPlace.onCharacterDialogue += InitDialogue;
-
-        // // Setup the dialogue queues
-        // _sentencesQueueFirstMet = new Queue<string>();
-        // _sentencesQueueMainMet = new Queue<string>();
-        // _sentencesQueueInterceptMet = new Queue<string>();
-        // _sentencesQueueCompletionMet = new Queue<string>();
-        //
-        // // Setup the answers queues
-        // _answersQueueFirstMet = new Queue<string>();
-        // _answersQueueMainMet = new Queue<string>();
-        // _answersQueueInterceptMet = new Queue<string>();
-        // _answersQueueCompletionMet = new Queue<string>();
-
-        // Setup the button listeners
         btnLeft.onClick.AddListener(DisplayNextSentence);
         btnRight.onClick.AddListener(DisplayNextSentence);
+    }
+    
+    public void RestartDialogue()
+    {
+        _currentCharacterAtPlace.ActivateCharacterUI();
+        InitDialogue(_currentCharacter, _currentPlace);
     }
 
     private void InitDialogue(SO_Character character, PlaceIndexes place)
     {
+        dialogueBox.SetActive(false);
+        
         _currentCharacter = character;
         _currentPlace = place;
 
-        // Array of sentences Strings from the SO_Character Object
-        _currentMainDialogue = _currentCharacter.characterPlaceSpecificDialogue[_currentPlace];
-
-
-        // Array of answers Strings from the SO_Character Object
-        _currentMainDialogueAnswers = _currentCharacter.characterPlaceSpecificDialogueAnswers[_currentPlace];
+        _currentSentence = " ";
         _currentDialogueIndex = 0;
+        
         dialogueBox.SetActive(true);
 
-        // // Clear the sentences queue
-        // _sentencesQueueMainMet.Clear();
-        //
-        // // Add the sentences to the queue
-        // foreach (var sentence in _currentMainDialogue)
-        // {
-        //     _sentencesQueueMainMet.Enqueue(sentence);
-        // }
-        //
-        // // Add the answers to the buttons
-        // foreach (var answer in _currentMainDialogueAnswers)
-        // {
-        //     _answersQueueMainMet.Enqueue(answer);
-        // }
-        
+        LoadDialogueAndAnswers();
         DisplayNextSentence();
+        
+        Debug.Log("InitDialogue: " + _currentCharacter.characterName + " is at " + _currentPlace);
     }
 
-    // Display the next sentence
-    private void DisplayNextSentence()
+    private void LoadDialogueAndAnswers()
     {
-        // // Check Character Flags
-        // if(_currentCharacter.firstMet) Dialogue(_sentencesQueueFirstMet, _answersQueueFirstMet);
-        // else if(_currentCharacter.mainMet) Dialogue(_sentencesQueueMainMet, _answersQueueMainMet);
-        // else if(_currentCharacter.interceptMet) Dialogue(_sentencesQueueInterceptMet, _answersQueueInterceptMet);
-        // else if(_currentCharacter.completionMet) Dialogue(_sentencesQueueCompletionMet, _answersQueueCompletionMet);
-    }
-
-    private void Dialogue(Queue<string> sentencesQueue, Queue<string> answersQueue)
-    {
-        if (_currentDialogueIndex < _currentMainDialogue.Length)
+        if (_currentCharacter.firstMet)
         {
-            _currentSentence = sentencesQueue.Dequeue();
-            _currentAnswer = answersQueue.Dequeue();
-            dialogueText.text = _currentSentence;
+            LoadDialogueAndAnswersFromCharacter(
+                _currentCharacter._characterDialogue_firstMet,
+                _currentCharacter._characterDialogue_firstMet_answers);
             
-            SetAnswerButtonsText(_currentDialogueIndex + 1, answersQueue.ToArray());
-            
-            _currentDialogueIndex++;
+            _currentCharacter.firstMet = false;
+            _currentCharacter.mainMet = true;
+            _currentCharacter.interceptMet = false;
+            _currentCharacter.completionMet = false;
         }
-        else EndDialogue();
+        else if (_currentCharacter.mainMet)
+        {
+            LoadDialogueAndAnswersFromCharacter(
+                _currentCharacter.characterPlaceSpecificDialogue[_currentPlace], 
+                _currentCharacter.characterPlaceSpecificDialogueAnswers[_currentPlace]);
+            SetCharacterDialogueFlagInterceptionMet();
+        }
+        else if (_currentCharacter.interceptMet)
+        {
+            LoadDialogueAndAnswersFromCharacter(
+                _currentCharacter._characterDialogue_interceptMet,
+                _currentCharacter._characterDialogue_interceptMet_answers);
+        }
+        else if (_currentCharacter.completionMet)
+        {
+            LoadDialogueAndAnswersFromCharacter(
+                _currentCharacter._characterDialogue_completionMet,
+                _currentCharacter._characterDialogue_completionMet_answers);
+        }
+        else
+        {
+           Debug.Log("No dialogue found for this character!");
+        }
+    }
+
+    public void SetCharacterDialogueFlagInterceptionMet()
+    {
+        _currentCharacter.firstMet = false;
+        _currentCharacter.mainMet = false;
+        _currentCharacter.interceptMet = true;
+        _currentCharacter.completionMet = false;
     }
     
+    public void SetCharacterDialogueFlagCompletionMet()
+    {
+        _currentCharacter.firstMet = false;
+        _currentCharacter.mainMet = false;
+        _currentCharacter.interceptMet = false;
+        _currentCharacter.completionMet = true;
+    }
+
+    private void LoadDialogueAndAnswersFromCharacter(string[] dialogue, string[] answers)
+    {
+        sentencesQueue.Clear();
+        answersQueue.Clear();
+        
+        if(_currentCharacter.currentCharacterPlace == PlaceIndexes.Forest && _currentCharacter.characterAttentionValue >= 100)
+            _forestShop.ShowShop();
+        else
+        {
+            _forestShop.HideShop();
+        }
+
+        foreach (var sentence in dialogue)
+        {
+            sentencesQueue.Enqueue(sentence);
+        }
+
+        foreach (var answer in answers)
+        {
+            answersQueue.Enqueue(answer);
+        }
+    }
+
+    private void DisplayNextSentence()
+    {
+        if (sentencesQueue.Count > 0)
+        {
+            _currentSentence = sentencesQueue.Dequeue();
+            dialogueText.text = _currentSentence;
+            SetAnswerButtonsText();
+        }
+        else
+        {
+            if (_currentPlace == PlaceIndexes.MagicShop && _currentCharacter.mainMet)
+            {
+                // TODO: Show Magic Shop Potion Canvas
+                if(_magicShopPotionCanvas != null)
+                    _magicShopPotionCanvas.showingCanvas = true;
+                else
+                {
+                    Debug.Log("Magic Shop Potion Canvas is null!");
+                }
+            }
+            EndDialogue();
+        }
+    }
+
     private void EndDialogue()
     {
         dialogueBox.SetActive(false);
-        // Deactivate the current character's Image
         _currentCharacterAtPlace.DeactivateCharacterUI();
-        if (_currentDialogueIndex >= _currentMainDialogue.Length) return;
-        _currentDialogueIndex = 0;
+        
+        switch (_currentCharacter.currentCharacterPlace)
+        {
+           case PlaceIndexes.Tavern:
+               if (_currentCharacter.characterAttentionValue >= 100 && !_currentCharacter.completionMet)
+               {
+                   SetCharacterDialogueFlagCompletionMet();
+                   PlayerManager.Instance.AddCompanion();
+                   RestartDialogue();
+               }
+               break;
+           case PlaceIndexes.MagicShop:
+               if (_currentCharacter.mainMet)
+               {
+                   _currentCharacter.characterAttentionValue = 100;
+                   SetCharacterDialogueFlagInterceptionMet();
+                   RestartDialogue();
+                   SetCharacterDialogueFlagCompletionMet();
+                   PlayerManager.Instance.AddCompanion();
+               }
+               break;
+           case PlaceIndexes.Forest:
+               if (_currentCharacter.mainMet)
+               {
+                   SetCharacterDialogueFlagInterceptionMet();
+                   RestartDialogue();
+               }
+               if (_currentCharacter.interceptMet)
+               { 
+                   _forestShop.ShowShop();
+                   _currentCharacter.characterAttentionValue = 100;
+                   SetCharacterDialogueFlagCompletionMet();
+                   PlayerManager.Instance.AddCompanion();
+               }
+               if(_currentCharacter.completionMet && _currentCharacter.characterAttentionValue >= 100)
+               {
+                   _forestShop.ShowShop();
+               }
+               break;
+           case PlaceIndexes.DragonLair:
+               if (_currentCharacter.interceptMet)
+               {
+                   // Dinge passieren
+                   SetCharacterDialogueFlagCompletionMet();
+               }
+               if (_currentCharacter.completionMet)
+               {
+                  // Spiel beenden
+                  // Credits
+               }
+               break;
+           default:
+               Debug.Log("Dialogue Manager: Character Class not found!");
+               break;
+        }
     }
 
-    // Current Workaround for the DialogueManager
-    private void SetAnswerButtonsText(int currentIndex, string[] answers)
+    private void SetAnswerButtonsText()
     {
-        btnLeft.GetComponentInChildren<TextMeshProUGUI>().text = answers[currentIndex];
-        btnRight.GetComponentInChildren<TextMeshProUGUI>().text = answers[currentIndex + 1];
+        if (answersQueue.Count < 2) return;
+        btnLeft.GetComponentInChildren<TextMeshProUGUI>().text = answersQueue.Dequeue();
+        btnRight.GetComponentInChildren<TextMeshProUGUI>().text = answersQueue.Dequeue();
     }
 }

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
-  m_Name: Character_DamageDealer
+  m_Name: Character_DamageDealer_Forest
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 42fa740a779cc2147bf62d17ea5811a7, type: 3}
+  characterSprite: {fileID: 21300000, guid: d9eec360fd832354abaff095c12443ae, type: 3}
   characterMoodSprites:
   - {fileID: -1414324355, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
   - {fileID: 1130471917, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
   - {fileID: -373895228, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
-  characterName: Yasmina
-  characterAttentionValue: 0
-  characterClass: 6
-  currentCharacterPlace: 0
+  characterName: Hanswurst
+  characterAttentionValue: 100
+  characterClass: 8
+  currentCharacterPlace: 2
   desiredObjects:
-  - {fileID: 11400000, guid: 5b36b651bb852944e8ce239d81509c69, type: 2}
+  - {fileID: 11400000, guid: cc4a97f31acc7bd4a99cea415f60fe7b, type: 2}
   _characterDialogue_Tavern:
   - "Du gehst hin\xFCber und vor dir sitzt eine junge Frau, die offensichtlich kampferprobt
     ist. Zumindest deutet ihre R\xFCstung und ihre Waffe darauf hin."
@@ -69,22 +69,26 @@ MonoBehaviour:
   - "\"Ich werde sehen, was sich machen l\xE4sst...\""
   - '"Bis bald!"'
   - '"Wir werden sehen..."'
-  _characterDialogue_TownCenter:
-  - Town Center Dialogue Line
-  - Another Town Center Dialogue Line
-  _characterDialogue_TownCenter_answers:
-  - text1
-  - text2
-  - text3
-  - text4
   _characterDialogue_Forest:
-  - Forest Dialogue Line
-  - Another Forest Dialogue Line
+  - "Nach einer Weile des Wanders durch den Wald erreichst du eine Lichtung. Der
+    Geruch von Gebratenem h\xE4ngt in der Luft. An einem Feuer sitzend, erkennst
+    du eine stark bewaffnete Frau, die dich her\xFCber winkt."
+  - '"Kommt, kommt..."
+
+    Sie winkt weiter
+
+    "Was treibt euch in diese entlegende
+    Ecke? Ich bekomme nicht oft Besuch. Setzt euch, setzt euch"'
+  - "\"Oh...\"\nMit einem leicht zur Seite gelegten Kopf l\xE4chelt sie euch an.\n\"Zuf\xE4llig
+    habe ich ein paar Pfeile abzugeben. Fragt bitte nicht, wie ich an sie gekommen
+    bin. Also bedient euch ruhig, ich will nichts daf\xFCr.\""
   _characterDialogue_Forest_answers:
-  - text4
-  - text4
-  - text4
-  - text4
+  - ebenfalls winken
+  - '"Hallo!"'
+  - "\"Ihr habt nicht zuf\xE4llig Pfeile? Ich sichend dringend welche.\""
+  - '"Verkauft ihr Waren?"'
+  - '"Vielen Dank!"'
+  - '"Ich nehme mir mal ein paar..."'
   _characterDialogue_MagicShop:
   - Magic Shop Dialogue Line
   - Another Magic Shop Dialogue Line
@@ -101,23 +105,45 @@ MonoBehaviour:
   - 2
   - 3
   - 4
-  _characterDialogue_firstMet: Etwas versteckt im Hintergrund erblickst du einen
-    Menschen mit offensichtlicher Abenteurer-Kleidung
+  _characterDialogue_DragonHort: []
+  _characterDialogue_DragonHort_answers: []
+  _characterDialogue_firstMet:
+  - "Nach einer Weile des Wanders durch den Wald erreichst du eine Lichtung. Der
+    Geruch von Gebratenem h\xE4ngt in der Luft. An einem Feuer sitzend, erkennst
+    du eine stark bewaffnete Frau, die dich her\xFCber winkt."
+  - '"Kommt, kommt..."
+
+    Sie winkt weiter
+
+    "Was treibt euch in diese entlegende
+    Ecke? Ich bekomme nicht oft Besuch. Setzt euch, setzt euch"'
   _characterDialogue_firstMet_answers:
-  - "Ein Getr\xE4nk bestellen"
-  - Person ansprechen
-  _characterDialogue_interceptMet: "\"Hey, sch\xF6n dich zu sehen. Hast du schon
-    gefunden, wonach ich dich gebeten hatte?\""
+  - ebenfalls winken
+  - '"Hallo!"'
+  - "\"Ihr habt nicht zuf\xE4llig Pfeile? Ich sichend dringend welche.\""
+  - '"Verkauft ihr Waren?"'
+  _characterDialogue_interceptMet:
+  - '"Wozu die Bewaffnung? Steht ein Abenteuer an?"'
+  - "Sie steht auf und klopft sich den Staub von den Beinen.\n\"Nun, da ich eh gerade
+    diesen Ort verlassen wollte, komme ich wohl lieber mit. Ihr scheint tatkr\xE4ftige
+    Unterst\xFCtzung zu brauchen.\""
+  - "\"Wir sehen uns dann am Stadttor\" sagt sie zwinkernd und f\xE4ngt an, ihr Lager
+    abzubauen."
   _characterDialogue_interceptMet_answers:
-  - Ja, hier ist es
-  - Ich suche noch...
-  _characterDialogue_completionMet: "\"Vielen Dank! Nun bin ich bestens ger\xFCstet.
-    Wir k\xF6nnen jederzeit los und diesem Scheusal ein Ende bereiten. Ich warte,
-    bis wir aufbrechen.\""
+  - "\"K\xF6nnte man so sagen, ja...\""
+  - '"Ich nehme mir mal ein paar..."'
+  - "\"\xC4hm...\""
+  - "\"Wirklich? Wir k\xF6nnen jede Person gebrauchen!\""
+  - '"Okay...?!"'
+  - '"Super, wir sehen uns!"'
+  _characterDialogue_completionMet:
+  - "Das Zelt ist bereits abgebaut und du siehst, wie sie ihre letzten Habseligkeiten
+    zusammen r\xE4umt.\n\"Ich brauche noch etwas, werde nachher aber p\xFCnktlich
+    am Stadttor sein, bis nachher\" l\xE4chelt sie und r\xE4umt weiter."
   _characterDialogue_completionMet_answers:
   - "Wir sehen uns sp\xE4ter!"
   - Bereite dich gut vor...
   firstMet: 0
   mainMet: 0
   interceptMet: 0
-  completionMet: 0
+  completionMet: 1

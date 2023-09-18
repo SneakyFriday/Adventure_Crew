@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Story Character", menuName = "Character")]
+[Serializable]
 public class SO_Character : ScriptableObject
 {
     private class DialogueData
@@ -15,10 +15,7 @@ public class SO_Character : ScriptableObject
     public enum CharacterClass
     {
         Paladin,
-        Rogue,
         Warrior,
-        Bard,
-        Cleric,
         Druid,
         Ranger,
         Sorcerer,
@@ -60,28 +57,28 @@ public class SO_Character : ScriptableObject
     [Header("Place Specific Dialogues")]
     [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Tavern;
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Tavern_answers;
-    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_TownCenter;
-    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_TownCenter_answers;
     [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Forest;
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Forest_answers;
     [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_MagicShop;
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_MagicShop_answers;
     [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_Blacksmith;
     [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_Blacksmith_answers;
+    [TextArea(5, 10)] [SerializeField] private string[] _characterDialogue_DragonHort;
+    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_DragonHort_answers;
     
     [Header("Generic Dialogue for Testing Purposes")]
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_firstMet = "";
-    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_firstMet_answers;
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_interceptMet = "";
-    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_interceptMet_answers;
-    [TextArea(5, 10)] [SerializeField] private string _characterDialogue_completionMet = "";
-    [TextArea(1, 2)] [SerializeField] private string[] _characterDialogue_completionMet_answers;
+    [TextArea(5, 10)] [SerializeField] public string[] _characterDialogue_firstMet;
+    [TextArea(1, 2)] [SerializeField] public string[] _characterDialogue_firstMet_answers;
+    [TextArea(5, 10)] [SerializeField] public string[] _characterDialogue_interceptMet;
+    [TextArea(1, 2)] [SerializeField] public string[] _characterDialogue_interceptMet_answers;
+    [TextArea(5, 10)] [SerializeField] public string[] _characterDialogue_completionMet;
+    [TextArea(1, 2)] [SerializeField] public string[] _characterDialogue_completionMet_answers;
 
     [Header("Interaction Flags")] 
-    public bool firstMet;
-    public bool mainMet;
-    public bool interceptMet;
-    public bool completionMet;
+    [SerializeField] public bool firstMet = true;
+    [SerializeField] public bool mainMet;
+    [SerializeField] public bool interceptMet;
+    [SerializeField] public bool completionMet;
 
     #endregion
 
@@ -93,12 +90,16 @@ public class SO_Character : ScriptableObject
         characterAttentionValue = 0;
         firstMet = true;
 
+        ResetCharacterDialogueFlags();
         characterPlaceSpecificDialogue.Clear();
         characterPlaceSpecificDialogueAnswers.Clear();
         characterGenericDialogueAndAnswers.Clear();
 
         foreach (PlaceIndexes place in Enum.GetValues(typeof(PlaceIndexes)))
         {
+            
+            ResetCharacterDialogueFlags();
+            
             var dialogueForPlace = GetDialogueForPlace(place);
             var answersForPlace = GetAnswersForPlace(place);
 
@@ -111,15 +112,28 @@ public class SO_Character : ScriptableObject
             {
                 characterPlaceSpecificDialogueAnswers.Add(place, answersForPlace);
             }
-            Debug.Log("Character Initialized! " + characterName + " " + characterClass + " " + characterAttentionValue);
         }
         
         // TODO: Testing, adjust this later.
-        if(_characterDialogue_firstMet != null) characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
-        if(_characterDialogue_interceptMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
-        if(_characterDialogue_completionMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
+        // Put the generic dialogue and answers into the dictionary
+        
+        //if(_characterDialogue_firstMet != null) characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet[0], _characterDialogue_firstMet_answers);
+        //if(_characterDialogue_interceptMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet[0], _characterDialogue_interceptMet_answers);
+        //if(_characterDialogue_completionMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet[0], _characterDialogue_completionMet_answers);
+        
+        //if(_characterDialogue_firstMet != null) characterGenericDialogueAndAnswers.Add(_characterDialogue_firstMet, _characterDialogue_firstMet_answers);
+        //if(_characterDialogue_interceptMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_interceptMet, _characterDialogue_interceptMet_answers);
+        //if(_characterDialogue_completionMet != null)characterGenericDialogueAndAnswers.Add(_characterDialogue_completionMet, _characterDialogue_completionMet_answers);
 
-        InitializeMoodSprites();
+        //InitializeMoodSprites();
+    }
+
+    public void ResetCharacterDialogueFlags()
+    {
+        firstMet = true;
+        mainMet = false;
+        interceptMet = false;
+        completionMet = false;
     }
 
     private void InitializeMoodSprites()
@@ -140,6 +154,7 @@ public class SO_Character : ScriptableObject
             PlaceIndexes.MagicShop => _characterDialogue_MagicShop_answers,
             PlaceIndexes.Blacksmith => _characterDialogue_Blacksmith_answers,
             PlaceIndexes.Forest => _characterDialogue_Forest_answers,
+            PlaceIndexes.DragonLair => _characterDialogue_DragonHort_answers,
             _ => null
         };
     }
@@ -153,6 +168,7 @@ public class SO_Character : ScriptableObject
             PlaceIndexes.MagicShop => _characterDialogue_MagicShop,
             PlaceIndexes.Blacksmith => _characterDialogue_Blacksmith,
             PlaceIndexes.Forest => _characterDialogue_Forest,
+            PlaceIndexes.DragonLair => _characterDialogue_DragonHort,
             _ => null
         };
     }

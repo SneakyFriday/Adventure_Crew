@@ -10,45 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
-  m_Name: Character_Healer
+  m_Name: Monster_DragonLair
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 1901df5a75aa08d4a9469166dbcf062a, type: 3}
+  characterSprite: {fileID: 21300000, guid: 8182266f38c74674895173175bb189b1, type: 3}
   characterMoodSprites:
   - {fileID: 21300000, guid: 4fcb217af2faf8f40afa18a53947ebc1, type: 3}
   - {fileID: 21300000, guid: 37f54483446097141b541abee062489f, type: 3}
   - {fileID: 21300000, guid: 7a6d40304d8e3254ba4edcf58f9822d2, type: 3}
-  characterName: Mage Maggie
+  characterName: "B\xF6ser Dragon"
   characterAttentionValue: 0
-  characterClass: 12
-  currentCharacterPlace: 3
+  characterClass: 2
+  currentCharacterPlace: 4
   desiredObjects:
-  - {fileID: 11400000, guid: d21e44e2f153790498601d58c223819e, type: 2}
+  - {fileID: 11400000, guid: cc4a97f31acc7bd4a99cea415f60fe7b, type: 2}
   _characterDialogue_Tavern: []
   _characterDialogue_Tavern_answers: []
-  _characterDialogue_TownCenter: []
-  _characterDialogue_TownCenter_answers: []
   _characterDialogue_Forest: []
   _characterDialogue_Forest_answers: []
-  _characterDialogue_MagicShop:
+  _characterDialogue_MagicShop: []
+  _characterDialogue_MagicShop_answers: []
+  _characterDialogue_Blacksmith:
+  - Hallo
+  _characterDialogue_Blacksmith_answers:
   - Hi
-  _characterDialogue_MagicShop_answers:
-  - "Na\t"
-  - Na
-  _characterDialogue_Blacksmith: []
-  _characterDialogue_Blacksmith_answers: []
-  _characterDialogue_firstMet: Ahoi
+  - Wie gehts?
+  _characterDialogue_DragonHort:
+  - Ich Dragon!
+  _characterDialogue_DragonHort_answers:
+  - Hi Dragon
+  - Sub Dragon
+  _characterDialogue_firstMet:
+  - First Met 1
   _characterDialogue_firstMet_answers:
-  - hi
-  - hi
-  _characterDialogue_interceptMet: Interectp
+  - Ein Freund...
+  - Zeigt mir eure Waren.
+  _characterDialogue_interceptMet:
+  - Intercept 1
   _characterDialogue_interceptMet_answers:
-  - Weiter
-  - Weiter
-  _characterDialogue_completionMet: Complete
+  - Hier...
+  - Ich suche noch...
+  _characterDialogue_completionMet:
+  - Completion 1
   _characterDialogue_completionMet_answers:
-  - weiter
-  - weiter
-  firstMet: 1
-  mainMet: 0
+  - Bis dahin...
+  - Wir sehen uns dort...
+  firstMet: 0
+  mainMet: 1
   interceptMet: 0
   completionMet: 0

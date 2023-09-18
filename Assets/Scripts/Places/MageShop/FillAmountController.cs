@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(SingleCanvasController))]
 public class FillAmountController : MonoBehaviour
 {
     [SerializeField] private Image _fillAmountImageR;
@@ -17,12 +14,17 @@ public class FillAmountController : MonoBehaviour
     [SerializeField] private Slider _sliderG;
     [SerializeField] private Slider _sliderB;
     [SerializeField] private Image imageCheck;
+    [SerializeField] private Image currentPlayerColor;
     [SerializeField] private Image toleranceImage;
+    // [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private TextMeshProUGUI _doneText;
     private const double Tolerance = 0.09;
     private Vector3 _rgbValue;
+    private SingleCanvasController _singleCanvasController;
 
     void Start()
     {
+        _singleCanvasController = GetComponent<SingleCanvasController>();
         SetRandomResultColor();
         UpdateFillImages();
     }
@@ -34,9 +36,7 @@ public class FillAmountController : MonoBehaviour
         _fillAmountImageG.fillAmount = _sliderG.value;
         _fillAmountImageB.fillAmount = _sliderB.value;
         
-        _fillAmountImageB.color = new Color(_sliderR.value, _sliderG.value, _sliderB.value);
-        _fillAmountImageG.color = new Color(_sliderR.value, _sliderG.value, _sliderB.value);
-        _fillAmountImageR.color = new Color(_sliderR.value, _sliderG.value, _sliderB.value);
+        currentPlayerColor.color = new Color(_sliderR.value, _sliderG.value, _sliderB.value);
         
         CheckResult();
     }
@@ -58,7 +58,16 @@ public class FillAmountController : MonoBehaviour
         if (Math.Abs(_rgbValue.x - _sliderR.value) < Tolerance && Math.Abs(_rgbValue.y - _sliderG.value) < Tolerance &&
             Math.Abs(_rgbValue.z - _sliderB.value) < Tolerance)
         {
-            print("You won!");
+            // Mischung ist richtig
+            _doneText.gameObject.SetActive(true);
+            _singleCanvasController.showingCanvas = false;
+            DialogueManager.Instance.SetCharacterDialogueFlagInterceptionMet();
+            DialogueManager.Instance.RestartDialogue();
+            DialogueManager.Instance.SetCharacterDialogueFlagCompletionMet();
+        }
+        else
+        {
+            _doneText.gameObject.SetActive(false);
         }
         
         toleranceImage.fillAmount = 1 + (float)Tolerance - toleranceSum;

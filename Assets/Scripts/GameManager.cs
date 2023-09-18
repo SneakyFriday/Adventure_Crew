@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    //[SerializeField] private List<SO_Character> characters = new();
     
     #region Singleton
 

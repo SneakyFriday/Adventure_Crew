@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,26 +9,27 @@ using UnityEngine.UI;
  * It uses the Character Object to get the character data.
  * Needs to be JSON because BinaryFormatter is unsafe.
  * Needs to be a List instead of an Dictionary because Dictionary is not serializable.
+ * Will be fully implemented in the next version.
  */
 
 [Serializable]
 internal class CharacterDataContainer
 {
-    public string characterName;
-    public int characterAttentionValue;
+    [SerializeField] public string characterName;
+    [SerializeField] public int characterAttentionValue;
 }
 
 public class SaveGameManager : MonoBehaviour
 {
     [SerializeField] private Character _characterObject;
     [SerializeField] private Button saveButton, loadButton;
-    private List<SO_Character> _characters;
-    private List<CharacterDataContainer> _characterDataContainer;
-    private string _filePatch;
+    [SerializeField] private List<SO_Character> _characters;
+    [SerializeField] private List<CharacterDataContainer> _characterDataContainer;
+    [SerializeField] private string _filePatch;
 
     private void Awake()
     {
-        _filePatch = Application.persistentDataPath + "/savegame.json";
+        _filePatch = $"{Application.persistentDataPath}/savegame.json";
         _characterDataContainer = new List<CharacterDataContainer>();
     }
 

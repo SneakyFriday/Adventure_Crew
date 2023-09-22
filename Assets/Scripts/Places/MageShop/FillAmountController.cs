@@ -26,7 +26,7 @@ public class FillAmountController : MonoBehaviour
     {
         _singleCanvasController = GetComponent<SingleCanvasController>();
         SetRandomResultColor();
-        UpdateFillImages();
+        UpdateFillImages(); 
     }
 
     public void UpdateFillImages()
@@ -44,16 +44,16 @@ public class FillAmountController : MonoBehaviour
     private void SetRandomResultColor()
     {
         _rgbValue = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-        print("Random RGB Value: " + _rgbValue);
+        //print("Random RGB Value: " + _rgbValue);
         imageCheck.color = new Color(_rgbValue.x, _rgbValue.y, _rgbValue.z, 1);
-        print("Image Color: " + imageCheck.color);
+        //print("Image Color: " + imageCheck.color);
     }
 
     private void CheckResult()
     {
-        print("Slider Values Check:  " + _sliderR.value + " " + _sliderG.value + " " + _sliderB.value);
-        print("RGB Values Check:  " + _rgbValue.x + " " + _rgbValue.y + " " + _rgbValue.z);
-        print("Tolerance 0.05: " + Math.Abs(_rgbValue.x - _sliderR.value) + " " + Math.Abs(_rgbValue.y - _sliderG.value) + " " + Math.Abs(_rgbValue.z - _sliderB.value));
+        //print("Slider Values Check:  " + _sliderR.value + " " + _sliderG.value + " " + _sliderB.value);
+        //print("RGB Values Check:  " + _rgbValue.x + " " + _rgbValue.y + " " + _rgbValue.z);
+        //print("Tolerance 0.05: " + Math.Abs(_rgbValue.x - _sliderR.value) + " " + Math.Abs(_rgbValue.y - _sliderG.value) + " " + Math.Abs(_rgbValue.z - _sliderB.value));
         var toleranceSum = Math.Abs(_rgbValue.x - _sliderR.value) + Math.Abs(_rgbValue.y - _sliderG.value) + Math.Abs(_rgbValue.z - _sliderB.value);
         if (Math.Abs(_rgbValue.x - _sliderR.value) < Tolerance && Math.Abs(_rgbValue.y - _sliderG.value) < Tolerance &&
             Math.Abs(_rgbValue.z - _sliderB.value) < Tolerance)
@@ -61,9 +61,6 @@ public class FillAmountController : MonoBehaviour
             // Mischung ist richtig
             _doneText.gameObject.SetActive(true);
             _singleCanvasController.showingCanvas = false;
-            DialogueManager.Instance.SetCharacterDialogueFlagInterceptionMet();
-            DialogueManager.Instance.RestartDialogue();
-            DialogueManager.Instance.SetCharacterDialogueFlagCompletionMet();
         }
         else
         {

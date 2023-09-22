@@ -50,6 +50,10 @@ MonoBehaviour:
   _loadingBar: {fileID: 2426487821376215542}
   _currentScene:
     m_Handle: 0
+  _skipImage: {fileID: 6454307996306782683, guid: bf07db4a5d550bd4bb3e0e509bd7cbf0, type: 3}
+  skipDuration: 3
+  fillSpeed: 1
+  waitTime: 3
 --- !u!114 &1706271740
 MonoBehaviour:
   m_ObjectHideFlags: 0

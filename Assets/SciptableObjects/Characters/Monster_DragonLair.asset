@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
   m_Name: Monster_DragonLair
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 8182266f38c74674895173175bb189b1, type: 3}
+  characterSprite: {fileID: 21300000, guid: ba22b1ac1dfdc734383ebe34b662185d, type: 3}
   characterMoodSprites:
   - {fileID: 21300000, guid: 4fcb217af2faf8f40afa18a53947ebc1, type: 3}
   - {fileID: 21300000, guid: 37f54483446097141b541abee062489f, type: 3}
   - {fileID: 21300000, guid: 7a6d40304d8e3254ba4edcf58f9822d2, type: 3}
-  characterName: "B\xF6ser Dragon"
+  characterName: Roter Drache
   characterAttentionValue: 0
   characterClass: 2
   currentCharacterPlace: 4
@@ -35,26 +35,41 @@ MonoBehaviour:
   - Hi
   - Wie gehts?
   _characterDialogue_DragonHort:
-  - Ich Dragon!
+  - "Ihr h\xF6rt erst das Br\xF6ckeln von herunterfallenden Steinen, als ihr auf
+    einmal ein lautes Schnaufen wahrnehmt.\nDie H\xF6hle ist hier hunderte Meter
+    lang und nochmals hunderte Meter hoch, sodass ihr nur wenig Orientierung habt.\nEin
+    lautes Knurren l\xE4sst die W\xE4nde beben und ihr sp\xFCrt die Ersch\xFCttung
+    an euren F\xFC\xDFen.\nDer Drache ist ganz in der N\xE4he, so viel ist sicher..."
   _characterDialogue_DragonHort_answers:
-  - Hi Dragon
-  - Sub Dragon
+  - Sich schnell umschauen
+  - '"HALLO?!" rufen'
   _characterDialogue_firstMet:
-  - First Met 1
+  - "Du hast es geschafft und drei wackere und abenteuerlustige Mitglieder f\xFCr
+    deine Gruppe zu finden.\nZusammen macht ihr euch auf, um dem Drachen im Hort
+    die Stirn zu bieten.\nEs dauert lange, nahezu unendlich lange. Als ihr irgendwann
+    aus dem Tunnel heraustretet."
   _characterDialogue_firstMet_answers:
-  - Ein Freund...
-  - Zeigt mir eure Waren.
+  - Kampfbereit machen
+  - "Vorsichtig weiter vorr\xFCcken"
   _characterDialogue_interceptMet:
-  - Intercept 1
+  - "Eure Waffen blitzen leicht im fahlen Licht, das diese H\xF6hle erleuchtet.\nLangsam
+    bewegt ihr euch vorw\xE4rts, eure Waffen im Anschlag.\nIhr fragt euch langsam,
+    ob dieses Abenteuer eine gute Idee war..."
+  - "Als vor euch ein lautes, dumpfes Grollen ert\xF6hnt und ihr m\xE4chtige Fl\xFCgelschl\xE4ge
+    h\xF6rt.\nHinter einem Felsvorsprung kommt auf einmal ein riesiger Drache in
+    eure Richtung, sein Feuer lodert in seinem Maul.\nIhr habt nur einen kleinen
+    Moment zu reagieren, da ihr sehen k\xF6nnt, wie sich das Feuer bereits sammelt."
   _characterDialogue_interceptMet_answers:
-  - Hier...
-  - Ich suche noch...
+  - '"Mein ihr, das war eine gute Idee...?"'
+  - "\"Leise, er k\xF6nnte jeden Moment auftauchen!\""
+  - Schreiend weglaufen.
+  - '"Zum Angriff! Adventure...awaits! Huzzah!" rufen und loslaufen'
   _characterDialogue_completionMet:
-  - Completion 1
+  - '*KNISTER KNISTER TSCHING PENG AUA*'
   _characterDialogue_completionMet_answers:
-  - Bis dahin...
-  - Wir sehen uns dort...
-  firstMet: 0
-  mainMet: 1
+  - '"AHHHHH!"'
+  - '"WAAAAHH!"'
+  firstMet: 1
+  mainMet: 0
   interceptMet: 0
   completionMet: 0

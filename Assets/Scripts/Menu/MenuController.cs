@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CanvasGroup), typeof(Canvas))]
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown resolutionDropdown;
     [SerializeField] private Resolution[] resolutions;
     private Canvas _canvas;
+    private CanvasGroup _canvasGroup;
 
     public static MenuController Instance;
 
@@ -27,6 +29,7 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
+        _canvasGroup = GetComponent<CanvasGroup>();
         _canvas = GetComponent<Canvas>();
         
         // ::: RESOLUTION ::: Get available resolutions and add them to the dropdown
@@ -78,9 +81,11 @@ public class MenuController : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetMenuActive(bool isActive)
+    public void SetMenuActive()
     {
-        _canvas.enabled = isActive;
+        _canvasGroup.alpha = _canvasGroup.alpha > 0 ? 0 : 1;
+        _canvasGroup.interactable = !_canvasGroup.interactable;
+        _canvasGroup.blocksRaycasts = !_canvasGroup.blocksRaycasts;
     }
 }
 

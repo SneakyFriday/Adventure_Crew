@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
   m_Name: Character_DamageDealer_Forest
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: d9eec360fd832354abaff095c12443ae, type: 3}
+  characterSprite: {fileID: 21300000, guid: 822ddb59f53aa1b4cab7efd88a8ac91b, type: 3}
   characterMoodSprites:
   - {fileID: -1414324355, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
   - {fileID: 1130471917, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
   - {fileID: -373895228, guid: 68c74ea7433df6d49ae8493a242c5d64, type: 3}
-  characterName: Hanswurst
-  characterAttentionValue: 100
+  characterName: Madeleine
+  characterAttentionValue: 0
   characterClass: 8
   currentCharacterPlace: 2
   desiredObjects:
@@ -144,6 +144,6 @@ MonoBehaviour:
   - "Wir sehen uns sp\xE4ter!"
   - Bereite dich gut vor...
   firstMet: 0
-  mainMet: 0
+  mainMet: 1
   interceptMet: 0
-  completionMet: 1
+  completionMet: 0

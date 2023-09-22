@@ -75,7 +75,7 @@ public class SO_Character : ScriptableObject
     [TextArea(1, 2)] [SerializeField] public string[] _characterDialogue_completionMet_answers;
 
     [Header("Interaction Flags")] 
-    [SerializeField] public bool firstMet = true;
+    [SerializeField] public bool firstMet;
     [SerializeField] public bool mainMet;
     [SerializeField] public bool interceptMet;
     [SerializeField] public bool completionMet;
@@ -98,7 +98,7 @@ public class SO_Character : ScriptableObject
         foreach (PlaceIndexes place in Enum.GetValues(typeof(PlaceIndexes)))
         {
             
-            ResetCharacterDialogueFlags();
+            //ResetCharacterDialogueFlags();
             
             var dialogueForPlace = GetDialogueForPlace(place);
             var answersForPlace = GetAnswersForPlace(place);

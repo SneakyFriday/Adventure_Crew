@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -18,14 +19,12 @@ public class DialogueManager : MonoBehaviour
     // TODO: Auslagern
     [SerializeField] private ForestShop _forestShop;
 
-    private Queue<string> sentencesQueue = new Queue<string>();
-    private Queue<string> answersQueue = new Queue<string>();
+    private Queue<string> sentencesQueue = new ();
+    private Queue<string> answersQueue = new ();
     private string _currentSentence;
-    private int _currentDialogueIndex;
 
     private SO_Character _currentCharacter;
     private PlaceIndexes _currentPlace;
-    //private Character _currentCharacterAtPlace;
 
     private void Awake()
     {
@@ -54,6 +53,12 @@ public class DialogueManager : MonoBehaviour
         InitDialogue(_currentCharacter, _currentPlace);
     }
 
+    public void SkipDialogue()
+    {
+        EndDialogue();
+        RestartDialogue();
+    }
+
     private void InitDialogue(SO_Character character, PlaceIndexes place)
     {
         dialogueBox.SetActive(false);
@@ -62,14 +67,13 @@ public class DialogueManager : MonoBehaviour
         _currentPlace = place;
 
         _currentSentence = " ";
-        _currentDialogueIndex = 0;
         
         dialogueBox.SetActive(true);
 
         LoadDialogueAndAnswers();
         DisplayNextSentence();
         
-        Debug.Log("InitDialogue: " + _currentCharacter.characterName + " is at " + _currentPlace);
+        //Debug.Log("InitDialogue: " + _currentCharacter.characterName + " is at " + _currentPlace);
     }
 
     private void LoadDialogueAndAnswers()
@@ -79,11 +83,7 @@ public class DialogueManager : MonoBehaviour
             LoadDialogueAndAnswersFromCharacter(
                 _currentCharacter._characterDialogue_firstMet,
                 _currentCharacter._characterDialogue_firstMet_answers);
-            
-            _currentCharacter.firstMet = false;
-            _currentCharacter.mainMet = true;
-            _currentCharacter.interceptMet = false;
-            _currentCharacter.completionMet = false;
+            SetCharacterDialogueFlagMainMet();
         }
         else if (_currentCharacter.mainMet)
         {
@@ -110,6 +110,21 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void SetCharacterDialogueFlagFirstMet()
+    {
+        _currentCharacter.firstMet = true;
+        _currentCharacter.mainMet = false;
+        _currentCharacter.interceptMet = false;
+        _currentCharacter.completionMet = false;
+    }
+    
+    public void SetCharacterDialogueFlagMainMet()
+    {
+        _currentCharacter.firstMet = false;
+        _currentCharacter.mainMet = true;
+        _currentCharacter.interceptMet = false;
+        _currentCharacter.completionMet = false;
+    }
     public void SetCharacterDialogueFlagInterceptionMet()
     {
         _currentCharacter.firstMet = false;
@@ -131,6 +146,7 @@ public class DialogueManager : MonoBehaviour
         sentencesQueue.Clear();
         answersQueue.Clear();
         
+        // Damit SpielerInnen auch nach dem Gespräch Pfeile nehmen können
         if(_currentCharacter.currentCharacterPlace == PlaceIndexes.Forest && _currentCharacter.characterAttentionValue >= 100)
             _forestShop.ShowShop();
         else
@@ -151,6 +167,7 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayNextSentence()
     {
+        Debug.Log("Sentence Count: " + sentencesQueue.Count);
         if (sentencesQueue.Count > 0)
         {
             _currentSentence = sentencesQueue.Dequeue();
@@ -161,13 +178,20 @@ public class DialogueManager : MonoBehaviour
         {
             if (_currentPlace == PlaceIndexes.MagicShop && _currentCharacter.mainMet)
             {
-                // TODO: Show Magic Shop Potion Canvas
-                if(_magicShopPotionCanvas != null)
+                if (_magicShopPotionCanvas != null)
+                {
+                    _magicShopPotionCanvas.SetCanvasRaycasts(true);
                     _magicShopPotionCanvas.showingCanvas = true;
+                }
                 else
                 {
                     Debug.Log("Magic Shop Potion Canvas is null!");
                 }
+            }
+
+            if (_currentPlace == PlaceIndexes.DragonLair && _currentCharacter.completionMet)
+            {
+                SceneManager.LoadScene(SceneIndexes.CREDITS.ToString());
             }
             EndDialogue();
         }
@@ -177,7 +201,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         _currentCharacterAtPlace.DeactivateCharacterUI();
-        
         switch (_currentCharacter.currentCharacterPlace)
         {
            case PlaceIndexes.Tavern:
@@ -194,8 +217,8 @@ public class DialogueManager : MonoBehaviour
                    _currentCharacter.characterAttentionValue = 100;
                    SetCharacterDialogueFlagInterceptionMet();
                    RestartDialogue();
-                   SetCharacterDialogueFlagCompletionMet();
                    PlayerManager.Instance.AddCompanion();
+                   SetCharacterDialogueFlagCompletionMet();
                }
                break;
            case PlaceIndexes.Forest:
@@ -217,15 +240,16 @@ public class DialogueManager : MonoBehaviour
                }
                break;
            case PlaceIndexes.DragonLair:
+               if (_currentCharacter.mainMet)
+               {
+                   Debug.Log("Dragon Lair: Main Met");
+                   RestartDialogue();
+               }
                if (_currentCharacter.interceptMet)
                {
-                   // Dinge passieren
+                   Debug.Log("Dragon Lair: Intercept Met");
+                   RestartDialogue();
                    SetCharacterDialogueFlagCompletionMet();
-               }
-               if (_currentCharacter.completionMet)
-               {
-                  // Spiel beenden
-                  // Credits
                }
                break;
            default:

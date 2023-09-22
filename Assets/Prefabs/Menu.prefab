@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5260899443119999532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -991,6 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.1
+  hoverSound: {fileID: 0}
 --- !u!1 &5260899443270769658
 GameObject:
   m_ObjectHideFlags: 0

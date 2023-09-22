@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1493592520130944409
+--- !u!1 &414865659749129551
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1493592520130944415}
-  - component: {fileID: 1493592520130944408}
+  - component: {fileID: 414865659749129549}
+  - component: {fileID: 414865659749129548}
   m_Layer: 0
-  m_Name: DialogueManager
+  m_Name: GameManager_adjusted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1493592520130944415
+--- !u!4 &414865659749129549
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493592520130944409}
+  m_GameObject: {fileID: 414865659749129551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 941.4794, y: 526.2051, z: -23.486423}
+  m_LocalPosition: {x: 979.70197, y: 537.7552, z: 3.3234096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1493592520130944408
+--- !u!114 &414865659749129548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493592520130944409}
+  m_GameObject: {fileID: 414865659749129551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8406a4fc3636c8148b9b024c7845b32b, type: 3}
+  m_Script: {fileID: 11500000, guid: ec880d762a1b5db4eb79c2202cb9df6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 0}
-  dialogueText: {fileID: 0}
-  btnLeft: {fileID: 0}
-  btnRight: {fileID: 0}
-  _currentCharacterAtPlace: {fileID: 0}
-  _magicShopPotionCanvas: {fileID: 0}
-  _forestShop: {fileID: 0}

@@ -18,9 +18,6 @@ public class PlaceManager : MonoBehaviour
     [SerializeField] private CanvasGroup actualCanvasGroup, targetCanvasGroup;
     [SerializeField] private CanvasGroupAlphaFade canvasGroupAlphaFade;
     [SerializeField] private GameObject dragonLairInfoBox;
-    
-    // TODO: Auslagern in einen UI-Controller
-    [SerializeField] private ForestShop _forestShop;
 
     private PlaceIndexes _currentPlace;
     public UnityEvent onPlaceChanged;
@@ -74,7 +71,6 @@ public class PlaceManager : MonoBehaviour
                 _currentPlace = place.placeIndex;
                 UpdateUI(place);
                 onPlaceChanged.Invoke();
-                Debug.Log("PlaceManager 'Change Place': " + _currentPlace);
             }
         }
     }
@@ -90,14 +86,12 @@ public class PlaceManager : MonoBehaviour
                 _currentPlace = place.placeIndex;
                 UpdateUI(place);
                 onPlaceChanged.Invoke();
-                Debug.Log("PlaceManager 'Change Place': " + _currentPlace);
             }
         }
         else
         {
             DragonLairInfoTextAppearance();
             Invoke(nameof(DragonLairInfoTextAppearance), 3);
-            Debug.Log("Not enough companions to enter the Dragon Lair!");
         }
     }
 
@@ -124,11 +118,6 @@ public class PlaceManager : MonoBehaviour
     {
         sceneBackground.sprite = place.backgroundSprite;
         placeName.text = place.placeIndex.ToString();
-    }
-
-    private void InvokePlaceChangedEvent()
-    {
-        onPlaceChanged.Invoke();
     }
 
     private void SwapCanvasGroups()

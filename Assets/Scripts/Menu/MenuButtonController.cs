@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MenuButtonController : MonoBehaviour
 {
-    public void LoadMenu(bool loadMenu)
+    public void LoadMenu()
     {
-        MenuController.Instance.SetMenuActive(loadMenu);
+        MenuController.Instance.SetMenuActive();
     }
 }

@@ -71,4 +71,14 @@ public class SingleCanvasController : MonoBehaviour
         canvasGroup.interactable = showingCanvas;
         canvasGroup.blocksRaycasts = showingCanvas;
     }
+    
+    public void SetCanvasInteractable(bool interactable)
+    {
+        canvasGroup.interactable = interactable;
+    }
+    
+    public void SetCanvasRaycasts(bool raycasts)
+    {
+        canvasGroup.blocksRaycasts = raycasts;
+    }
 }

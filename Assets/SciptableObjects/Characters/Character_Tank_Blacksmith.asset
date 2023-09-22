@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
   m_Name: Character_Tank_Blacksmith
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 2402618e531466e468730dea563eb2fd, type: 3}
+  characterSprite: {fileID: 21300000, guid: ba22b1ac1dfdc734383ebe34b662185d, type: 3}
   characterMoodSprites:
   - {fileID: 21300000, guid: 4fcb217af2faf8f40afa18a53947ebc1, type: 3}
   - {fileID: 21300000, guid: 37f54483446097141b541abee062489f, type: 3}

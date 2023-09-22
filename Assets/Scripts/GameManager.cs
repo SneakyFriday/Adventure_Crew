@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        // Lade die erste Scene
         LevelManager.Instance.LoadScene(SceneIndexes.STARTSCREEN.ToString());
     }
 

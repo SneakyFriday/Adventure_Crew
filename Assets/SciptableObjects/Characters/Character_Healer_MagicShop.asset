@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
   m_Name: Character_Healer_MagicShop
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 41dbd384b4bb3a244851af1f2f79baf1, type: 3}
+  characterSprite: {fileID: 21300000, guid: 7e4f5d39090b68b469dc59dc51e8639f, type: 3}
   characterMoodSprites:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  characterName: Magier Maggie
+  characterName: Rarsek
   characterAttentionValue: 0
   characterClass: 9
   currentCharacterPlace: 1
@@ -45,11 +45,11 @@ MonoBehaviour:
   - '"Willkommen! Einen Moment bitte..."
 
 
-    Die Magierin scheint etwas in einem
+    Der Magier scheint etwas in einem
     Buch vertieft zu sein.'
-  - "Sie schaut auf und l\xE4chelt dich an.\n\n\"Entschuldigt, ich habe gerade Probleme
+  - "Er schaut auf und l\xE4chelt dich an.\n\n\"Entschuldigt, ich habe gerade Probleme
     mit einem meiner Tr\xE4nke. Ihr k\xF6nnt nicht zuf\xE4llig Tr\xE4nke brauen?\""
-  - "Freudig schiebt sie euch einen Korb voll farbiger Fl\xE4schen zu.\n\n\"Bitte!
+  - "Freudig schiebt er dir einen Korb voll farbiger Fl\xE4schen zu.\n\n\"Bitte!
     Ich versuche hier einen Trank nachzubilden. Vielleicht habt ihr mehr Gl\xFCck.\""
   _characterDialogue_firstMet_answers:
   - '"Hallo!"'
@@ -79,6 +79,6 @@ MonoBehaviour:
   - "\"Bis sp\xE4ter dann\""
   - Nicken
   firstMet: 0
-  mainMet: 1
-  interceptMet: 0
+  mainMet: 0
+  interceptMet: 1
   completionMet: 0

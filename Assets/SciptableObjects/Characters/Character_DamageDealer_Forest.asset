@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   characterName: Madeleine
-  characterAttentionValue: 0
+  characterAttentionValue: 100
   characterClass: 8
   currentCharacterPlace: 2
   desiredObjects:

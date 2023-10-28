@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed8b67e64c5864380bda50818522f0, type: 3}
   m_Name: Character_DamageDealer_Tavern
   m_EditorClassIdentifier: 
-  characterSprite: {fileID: 21300000, guid: 42fa740a779cc2147bf62d17ea5811a7, type: 3}
+  characterSprite: {fileID: 21300000, guid: 593d99cb73e7ae842873e6ec38b9dc06, type: 3}
   characterMoodSprites:
   - {fileID: 0}
   - {fileID: 0}

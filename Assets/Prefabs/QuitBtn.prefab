@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
-  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
+  hoverSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!1 &8442035262823499899
 GameObject:
   m_ObjectHideFlags: 0

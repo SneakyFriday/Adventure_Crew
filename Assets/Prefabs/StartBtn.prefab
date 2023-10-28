@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5977775762997786024}
   - component: {fileID: 5977775762997786025}
   - component: {fileID: 5977775762997786030}
-  - component: {fileID: 5977775762997786027}
   - component: {fileID: 5977775762997786026}
   m_Layer: 5
   m_Name: StartBtn
@@ -99,14 +98,14 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.26665512, g: 0.19335175, b: 0.745283, a: 0.25490198}
-    m_PressedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 1}
+    m_PressedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 0.69411767}
     m_SelectedColor: {r: 0.26666668, g: 0.19215687, b: 0.74509805, a: 0.5176471}
     m_DisabledColor: {r: 0.9137255, g: 0.9137255, b: 0.9137255, a: 0.5019608}
-    m_ColorMultiplier: 1
+    m_ColorMultiplier: 1.16
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -124,19 +123,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5257333684387748316, guid: f450b04706e170346b90d4f93e6a09e4, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 2
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 414865659749129548, guid: 366b7d0e132930e45beaae35b235451b, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadIntro
         m_Mode: 1
@@ -148,27 +147,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &5977775762997786027
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5977775762997786028}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 56c426d23ccebff49a9f28366ca3adaf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5977775762997786026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scaleUpFactor: 1.05
-  hoverSound: {fileID: 8300000, guid: 60bcab93ff76eb54ba51f586c4abf8e6, type: 3}
+  hoverSound: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
 --- !u!1 &5977775764219046055
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,6 +59,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""DialogueInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""046fb22b-1bf7-434d-858f-9479e2af5a72"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
